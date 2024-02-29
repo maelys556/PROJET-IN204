@@ -1,49 +1,184 @@
 #include <iostream>
+#include <vector>
+#include 'position.h'
 
 class Tetromino
 {
-    public:
-    int couleur;
+    protected:
+    int id; // 0 = I, 1 = J, 2 = L, 3 = O, 4 = S, 5 = T, 6 = Z
     int orientation;
+    int RowOffset;
+    int ColumnOffset;
+    std::vector<std::vector<Position>> cells;
 
-    Tetromino() {}
+    public:
 
-    Tetromino(int aColor, int anOrientation) :
-    couleur(aColor), orientation(anOrientation)
+    Tetromino(int anId, int anOrientation) :
+    id(anId), orientation(anOrientation), RowOffset(0), ColumnOffset(0)
     {}
 
+    void rotate() {
+
+    }
+
+    void moveRight(int nb_rows, int nb_columns) {
+        RowOffset += nb_rows;
+        ColumnOffset += nb_columns;
+    }
+
+    void moveLeft() (int nb_rows, int nb_columns) {
+        RowOffset -= nb_rows;
+        ColumnOffset -= nb_columns;
+    }
+
+    void isValid() {
+
+    }
+
     ~Tetromino()
-}
+};
 
 
-class T : public Tetromino
+class TBlock : public Tetromino
 {
-    public: 
-    int bloc1_x;
-    int bloc1_y;
-    int bloc2_x;
-    int bloc2_y;
-    int bloc3_x;
-    int bloc3_y;
-    int bloc4_x;
-    int bloc4_y;
+    private: 
 
-    T() {}
+    public :
+    TBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        cells[0] = {Position(1,1), Position(2,0), Position(2,1), Position(2,2)};
+        cells[1] = {Position(0,0), Position(1,0), Position(1,1), Position(2,0)};
+        cells[2] = {Position(0,0), Position(0,1), Position(0,2), Position(1,1)};
+        cells[3] = {Position(0,2), Position(1,1), Position(1,2), Position(2,2)};
+    }
+};
 
-    T(int x, int y, int anOrientation) :
-    bloc1_x(x), bloc1_y(y)
-    if (anOrientation == 0) {
-        bloc2_x(x+1), bloc2_y(y), bloc3_x(x+2), bloc3_y(y), bloc4_x(x+3), bloc4_y(y)
+class LBlock : public Tetromino
+{
+    public:
+    LBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        cells[0] = {Position(0,0), Position(1,0), Position(2,0), Position(2,0)};
+        cells[1] = {Position(0,0), Position(0,1), Position(0,2), Position(1,0)};
+        cells[2] = {Position(0,1), Position(0,2), Position(1,2), Position(2,2)};
+        cells[3] = {Position(1,2), Position(2,0), Position(2,1), Position(2,2)};
     }
-    if (anOrientation == 1) {
-        bloc2_x(x), bloc2_y(y-1), bloc3_x(x), bloc3_y(y-2), bloc4_x(x), bloc4_y(y-3)
+};
+
+class JBlock : public Tetromino
+{
+    public:
+    JBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        cells[0] = {Position(0,2), Position(1,2), Position(2,1), Position(2,2)};
+        cells[1] = {Position(1,0), Position(2,0), Position(2,1), Position(2,2)};
+        cells[2] = {Position(0,0), Position(0,1), Position(1,0), Position(2,0)};
+        cells[3] = {Position(0,0), Position(0,1), Position(0,2), Position(1,2)};
     }
-    if (anOrientation == 2) {
-        bloc2_x(x+1), bloc2_y(y), bloc3_x(x+2), bloc3_y(y), bloc4_x(x+3), bloc4_y(y)
+};
+
+class OBlock : public Tetromino
+{
+    public:
+    OBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        cells[0] = {Position(0,0), Position(1,0), Position(2,0), Position(2,0)};
+        cells[1] = {Position(0,0), Position(0,1), Position(0,2), Position(1,0)};
+        cells[2] = {Position(0,1), Position(0,2), Position(1,2), Position(2,2)};
+        cells[3] = {Position(1,2), Position(2,0), Position(2,1), Position(2,2)};
     }
-    if (anOrientation == 3) {
-        bloc2_x(x), bloc2_y(y-1), bloc3_x(x), bloc3_y(y-2), bloc4_x(x), bloc4_y(y-3)
-    }
+};
+
+class SBlock : public Tetromino
+{
+
+};
+
+class ZBlock : public Tetromino 
+{
+
+};
+
+class IBlock : public Tetromino 
+{
+
+};
+
+    /*
+    T(int anOrientation) {
+        id = 5;
+        if (anOrientation==0) {
+            cells[0][0] = 0;
+            cells[0][1] = 0;
+            cells[0][2] = 0;
+            cells[0][3] = 0;
+            cells[1][0] = 0;
+            cells[1][1] = 1;
+            cells[1][2] = 0;
+            cells[1][3] = 0;
+            cells[2][0] = 1;
+            cells[2][1] = 1;
+            cells[2][2] = 1;
+            cells[2][3] = 0;
+            cells[3][0] = 0;
+            cells[3][1] = 0;
+            cells[3][2] = 0;
+            cells[3][3] = 0;
+        }
+        if (anOrientation==1) {
+            cells[0][0] = 1;
+            cells[0][1] = 0;
+            cells[0][2] = 0;
+            cells[0][3] = 0;
+            cells[1][0] = 1;
+            cells[1][1] = 1;
+            cells[1][2] = 0;
+            cells[1][3] = 0;
+            cells[2][0] = 1;
+            cells[2][1] = 0;
+            cells[2][2] = 0;
+            cells[2][3] = 0;
+            cells[3][0] = 0;
+            cells[3][1] = 0;
+            cells[3][2] = 0;
+            cells[3][3] = 0;
+        }
+        if (anOrientation==2) {
+            cells[0][0] = 1;
+            cells[0][1] = 1;
+            cells[0][2] = 1;
+            cells[0][3] = 0;
+            cells[1][0] = 0;
+            cells[1][1] = 1;
+            cells[1][2] = 0;
+            cells[1][3] = 0;
+            cells[2][0] = 0;
+            cells[2][1] = 0;
+            cells[2][2] = 0;
+            cells[2][3] = 0;
+            cells[3][0] = 0;
+            cells[3][1] = 0;
+            cells[3][2] = 0;
+            cells[3][3] = 0;
+        }
+        if (anOrientation==3) {
+            cells[0][0] = 0;
+            cells[0][1] = 0;
+            cells[0][2] = 1;
+            cells[0][3] = 0;
+            cells[1][0] = 0;
+            cells[1][1] = 1;
+            cells[1][2] = 1;
+            cells[1][3] = 0;
+            cells[2][0] = 0;
+            cells[2][1] = 0;
+            cells[2][2] = 1;
+            cells[2][3] = 0;
+            cells[3][0] = 0;
+            cells[3][1] = 0;
+            cells[3][2] = 0;
+            cells[3][3] = 0;
+        }
+
+    };
+};
+    
 
     void rotateRight() {
         self.orientation = (self.orientation+1) % 4;
@@ -81,3 +216,8 @@ class T : public Tetromino
         }
     }
 }
+
+int main() {
+    TBlock primo = TBlock();
+    return 0;
+}*/
