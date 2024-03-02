@@ -27,6 +27,13 @@ class Grid
         }
     }
 
+    bool IsCellOutside(int row, int column) {
+        if (row < 0 || row >= width || column < 0 || column >= height) {
+            return true;
+        }
+        return false;
+    }
+
     ~Grid()
 }
 
