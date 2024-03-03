@@ -1,15 +1,31 @@
 #include <SDL2/SDL.h>
 #include <iostream>
+//#include "game.cpp"
+#include "grid.cpp"
+#include "tetromino.cpp"
 
-const int LARGEUR_IMAGE = 100; // Largeur de l'image
-const int HAUTEUR_IMAGE = 100; // Hauteur de l'image
+int main() {
+    //Game game(0);
+    std::cout << "current_id:" << std::endl;
+    Grid grid(10, 20);
+    grid.Print_Grid();
+    Tetromino aBlock = Tetromino(0, 0);
+    std::cout << "current_id:" << std::endl;
+    //TBlock anOtherBlock = TBlock(0, 0);
+    std::cout << "RowOffset de aBlock:" << aBlock.RowOffset << std::endl;
+    aBlock.printTetromino();
+    //anOtherBlock.printTetromino();
+    return 0;
+}
+
+/*
+const int width = 10; // Largeur de l'image
+const int height = 20; // Hauteur de l'image
 
 // Tableau d'entiers représentant les pixels de l'image
 int tableauPixels[LARGEUR_IMAGE * HAUTEUR_IMAGE];
 
-
-
-int main() {
+ {
     for (int i=0; i<LARGEUR_IMAGE; i++) {
         for (int j=0; j<HAUTEUR_IMAGE; j++) {
             tableauPixels[i,j] = 5;
@@ -73,3 +89,4 @@ int main() {
 
     return 0;
 }
+*/

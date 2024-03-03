@@ -1,25 +1,62 @@
 #include <iostream>
-# include <vector>
-#include 'grid.h'
-#include 'tetromino.h'
+#include <vector>
+#include <random>
+#include "grid.cpp"
+#include "tetromino.cpp"
 
 
 class Game 
 {
     public: 
-    grid = Grid(20,10);
-    blocks = {}   // //!\\ gérer la liste d'attente des blocs
-    Tetromino currentBlock;
-    Tetromino nextBlock;
+    Grid grid;
+        // 0 = I, 1 = J, 2 = L, 3 = O, 4 = S, 5 = T, 6 = Z
+    int current_id;
+    Tetromino currentBlock; // le premier bloc est arbitrairement un bloc T
+    
 
-    bool IsBlockOutside() {
-        std::<vector<Position>> cells = currentBlock.getCells();
-        for (int i=0; i<cells.size(); i++) {
-            if (IsCellOutsideGrid(cells[i].x, cells[i].y) == True) {
-                return True;
+    Game(int aCurrent_id) : current_id(aCurrent_id) {
+        grid = Grid(10, 20);
+        //current_id = aCurrent_id;
+        currentBlock = Tetromino(0, 0);
+    } 
+
+    Tetromino getNewBlock(int next_id) {
+        /*std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(0,6);
+        int next_id = dis(gen);*/
+        if (next_id == 0) {
+                return TBlock(0, 0);
+            }
+            if (next_id == 1) {
+                return LBlock(1, 0);
+            }
+            if (next_id == 2) {
+                return JBlock(2, 0);
+            }
+            if (next_id == 3) {
+                return OBlock(3, 0);
+            }
+            if (next_id == 4) {
+                return SBlock(4, 0);
+            }
+            if (next_id == 5) {
+                return TBlock(5, 0);
+            }
+            if (next_id == 6) {
+                return ZBlock(6, 0);
             }
         }
-        return False;
+    
+
+    bool IsBlockOutside() {
+        std::vector<Position> cells = currentBlock.getCells();
+        for (int i=0; i<cells.size(); i++) {
+            if (grid.IsCellOutside(cells[i].x, cells[i].y) == true) {
+                return true;
+            }
+        }
+        return false;
     }
 
     void undoRotation() {
@@ -28,7 +65,7 @@ class Game
 
     void rotate() {
         currentBlock.orientation = (currentBlock.orientation+1) % 4;
-        if (IsBlockOutside() == True) {
+        if (IsBlockOutside() == true) {
             undoRotation();
         }
     }
@@ -36,7 +73,7 @@ class Game
     void move(int nb_rows, int nb_columns) {
         currentBlock.RowOffset += nb_rows;
         currentBlock.ColumnOffset += nb_columns;
-        if (IsBlockOutside() == True) {
+        if (IsBlockOutside() == true) {
             currentBlock.RowOffset -= nb_rows;
             currentBlock.ColumnOffset -= nb_columns;
         }
@@ -44,50 +81,50 @@ class Game
 
     void moveRight() {
         currentBlock.ColumnOffset += 1;
-        if (IsBlockOutside() == True) {
+        if (IsBlockOutside() == true) {
             currentBlock.ColumnOffset -= 1;
         }
-        if (isCollision() == True) {
+        if (isCollision() == true) {
             lockBlock(); // si le tetromino touche un tetromino bloqué alors il se bloque
         }
     }
 
     void moveLeft() {
         currentBlock.ColumnOffset -= 1;
-        if (IsBlockOutside() == True) {
+        if (IsBlockOutside() == true) {
             currentBlock.ColumnOffset += 1;
         }
-        if (isCollision() == True) {
+        if (isCollision() == true) {
             lockBlock(); // si le tetromino touche un tetromino bloqué alors il se bloque
         }
     }
 
     void moveDown() {
         currentBlock.RowOffset += 1;  // //!\\ ATTENTION ! dans quel sens augmentent les y de la grille ?
-        if (IsBlockOutside() == True) {
+        if (IsBlockOutside() == true) {
             currentBlock.RowOffset -= 1;
         }
-        if (isCollision() == True) {
+        if (isCollision() == true) {
             lockBlock(); // si le tetromino touche un tetromino bloqué alors il se bloque
         }
     } 
 
     void lockBlock() {
-        std::<vector<Position>> cells = currentBlock.getCells();
+        std::vector<Position> cells = currentBlock.getCells();
         for (int i=0; i<cells.size(); i++) {
             grid.grid[cells[i].x][cells[i].y] = currentBlock.id;
         }
     }
 
-    void isCollision() { // Ajouter la gestion des collisions dans les méthodes rotate et move !!!!!
+    bool isCollision() { // Ajouter la gestion des collisions dans les méthodes rotate et move !!!!!
         std::vector<Position> cells = currentBlock.getCells();
         for (int i=0; i<cells.size(); i++) {
             if (grid.grid[cells[i].x][cells[i].y]!= 0) {
-                return True;
+                return true;
             }
         }
-        return False;
+        return false;
     }
 
-
+    //~Game();
 };

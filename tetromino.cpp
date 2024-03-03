@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include 'position.h'
+#include "position.cpp"
 
 class Tetromino
 {
@@ -16,7 +16,7 @@ class Tetromino
     id(anId), orientation(anOrientation), RowOffset(0), ColumnOffset(0)
     {}
 
-    std::<vector<Position>> getCells() {
+    std::vector<Position> getCells() {
         std::vector<Position> c = cells[orientation];
         std::vector<Position> occupied_cells;
         for (int i=0; i<c.size(); i++) {
@@ -26,7 +26,14 @@ class Tetromino
         return occupied_cells;
     }
 
-    ~Tetromino()
+    void printTetromino() {
+        std::vector<Position> c = cells[orientation];
+        for (int i=0; i<c.size(); i++) {
+            std::cout << c[i].x << " " << c[i].y << std::endl;
+        }
+    }
+
+    //~Tetromino();
 };
 
 
@@ -36,6 +43,7 @@ class TBlock : public Tetromino
 
     public :
     TBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        //id = 5;
         cells[0] = {Position(1,1), Position(2,0), Position(2,1), Position(2,2)};
         cells[1] = {Position(0,0), Position(1,0), Position(1,1), Position(2,0)};
         cells[2] = {Position(0,0), Position(0,1), Position(0,2), Position(1,1)};
@@ -47,6 +55,7 @@ class LBlock : public Tetromino
 {
     public:
     LBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        //id=2;
         cells[0] = {Position(0,0), Position(1,0), Position(2,0), Position(2,0)};
         cells[1] = {Position(0,0), Position(0,1), Position(0,2), Position(1,0)};
         cells[2] = {Position(0,1), Position(0,2), Position(1,2), Position(2,2)};
@@ -58,6 +67,7 @@ class JBlock : public Tetromino
 {
     public:
     JBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        //id =1;
         cells[0] = {Position(0,2), Position(1,2), Position(2,1), Position(2,2)};
         cells[1] = {Position(1,0), Position(2,0), Position(2,1), Position(2,2)};
         cells[2] = {Position(0,0), Position(0,1), Position(1,0), Position(2,0)};
@@ -69,6 +79,7 @@ class OBlock : public Tetromino // //!\\ à finir
 {
     public:
     OBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        //id = 3;
         cells[0] = {Position(0,0), Position(0,1), Position(1,0), Position(1,1)};
         cells[1] = {Position(0,0), Position(0,1), Position(1,0), Position(1,1)};
         cells[2] = {Position(0,0), Position(0,1), Position(1,0), Position(1,1)};
@@ -80,6 +91,7 @@ class SBlock : public Tetromino
 {
     public:
     SBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        //id = 4;
         cells[0] = {Position(0,1), Position(0,2), Position(1,0), Position(1,1)};
         cells[1] = {Position(0,0), Position(1,0), Position(1,1), Position(2,1)};
         cells[2] = {Position(1,1), Position(1,2), Position(2,0), Position(2,1)};
@@ -89,7 +101,9 @@ class SBlock : public Tetromino
 
 class ZBlock : public Tetromino 
 {
+    public:
     ZBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        //id = 6;
         cells[0] = {Position(0,0), Position(0,1), Position(1,1), Position(1,2)};
         cells[1] = {Position(0,1), Position(1,0), Position(1,1), Position(2,0)};
         cells[2] = {Position(1,0), Position(1,1), Position(2,1), Position(2,2)};
@@ -99,7 +113,9 @@ class ZBlock : public Tetromino
 
 class IBlock : public Tetromino 
 {
+    public:
     IBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
+        //id = 0;
         cells[0] = {Position(0,1), Position(1,1), Position(2,1), Position(3,1)};
         cells[1] = {Position(1,0), Position(1,1), Position(1,2), Position(1,3)};
         cells[2] = {Position(0,2), Position(1,2), Position(2,2), Position(3,2)};
