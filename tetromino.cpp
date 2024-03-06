@@ -10,11 +10,14 @@ class Tetromino
     int orientation;
     int RowOffset;
     int ColumnOffset;
-    std::vector<std::vector<Position>> cells;
+    std::vector<std::vector<Position>> cells = std::vector<std::vector<Position>>(4);//, std::vector<Position>(4, Position(0,0)));
 
     Tetromino(int anId, int anOrientation) :
-    id(anId), orientation(anOrientation), RowOffset(0), ColumnOffset(0)
-    {}
+    id(anId), orientation(anOrientation), RowOffset(0), ColumnOffset(0) {
+        for (int i = 0 ; i < 4 ; i++) {
+            cells[i].resize(4, Position(0,0));
+        }
+    }
 
     std::vector<Position> getCells() {
         std::vector<Position> c = cells[orientation];
@@ -28,9 +31,14 @@ class Tetromino
 
     void printTetromino() {
         std::vector<Position> c = cells[orientation];
+        std::cout << "Tetromino - orientation :" << orientation << std::endl;
         for (int i=0; i<c.size(); i++) {
-            std::cout << c[i].x << " " << c[i].y << std::endl;
+            std::cout << "(" << c[i].x << "," << c[i].y << ")" << std::endl;
         }
+    }
+
+    void rotate() {
+        orientation = (orientation + 1) % 4;
     }
 
     //~Tetromino();

@@ -1,20 +1,65 @@
 #include <SDL2/SDL.h>
 #include <iostream>
-//#include "game.cpp"
-#include "grid.cpp"
-#include "tetromino.cpp"
+#include "game.cpp"
+//#include "grid.cpp"
+//#include "tetromino.cpp"
 
 int main() {
-    //Game game(0);
+    /*
     std::cout << "current_id:" << std::endl;
     Grid grid(10, 20);
     grid.Print_Grid();
     Tetromino aBlock = Tetromino(0, 0);
     std::cout << "current_id:" << std::endl;
-    //TBlock anOtherBlock = TBlock(0, 0);
     std::cout << "RowOffset de aBlock:" << aBlock.RowOffset << std::endl;
+    std::cout << "ColumnOffset de aBlock:" << aBlock.ColumnOffset << std::endl;
     aBlock.printTetromino();
-    //anOtherBlock.printTetromino();
+    TBlock anOtherBlock = TBlock(0, 0);
+    anOtherBlock.printTetromino();
+    std::cout << "RowOffset de anotherBlock:" << anOtherBlock.RowOffset << std::endl;
+    std::cout << "ColumnOffset de anotherBlock:" << anOtherBlock.ColumnOffset << std::endl;
+    anOtherBlock.rotate();
+    anOtherBlock.printTetromino();
+    */
+
+    Game game(0);
+    
+    game.currentBlock.printTetromino();
+    game.currentBlock.rotate();
+    game.currentBlock.printTetromino();
+
+    game.currentBlock = game.getNewBlock(4);
+
+    game.currentBlock.printTetromino();
+    game.currentBlock.rotate();
+    game.currentBlock.printTetromino();
+    game.moveDown();
+    game.moveDown();
+    game.moveDown();
+    game.moveDown();
+    game.moveDown();
+    game.lockBlock();
+    game.moveDown();
+    game.moveDown();
+    game.moveDown();
+    game.moveDown();
+    game.moveDown();
+    game.grid.Print_Grid();
+    /*for (int i=0; i<10; i++) {
+        game.moveDown();
+        std::cout << game.currentBlock.id << "row offset:" << game.currentBlock.RowOffset << std::endl;
+        std::cout << "column offset:" << game.currentBlock.ColumnOffset << std::endl;
+        game.grid.Print_Grid();
+    }
+    game.lockBlock();
+    game.currentBlock = game.getNewBlock(5);
+    for (int i=0; i<10; i++) {
+        game.moveDown();
+        std::cout << "row offset:" << game.currentBlock.RowOffset << std::endl;
+        std::cout << "column offset:" << game.currentBlock.ColumnOffset << std::endl;
+    }*/
+
+    
     return 0;
 }
 
