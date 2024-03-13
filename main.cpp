@@ -2,10 +2,34 @@
 #include <SDL.h>
 
 #include <iostream>
-#include <interface.hpp>
+#include "include/interface.hpp"
+#include "include/grid.hpp"
+#include "include/constants.hpp"
 
 int main(int argc, char* argv[]){
-    std::cout << "hello ma~Elys\n";
+
+    Grid grid(5,7);
+    grid.affiche();
+
+
+    // reel code
+    Interface interface;
+    interface.inter_init();
+
+// loading all textures
+    SDL_Texture* blocktextures[NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS];
+    interface.texture_load_blocks(blocktextures);
+    
+    
+    
+    //end-------------------------------------------------------------------------------------------------------------
+
+    // tests
+    int boucle = 350;
+    while (boucle>0){
+        interface.inter_update(blocktextures);
+        boucle-=1;
+    }
 };
 
 /*    Classe Piece :

@@ -976,6 +976,11 @@ CMakeFiles/Tetris.dir/src/interface.cpp.o: ../src/interface.cpp \
   ../include/constants.hpp \
   ../include/constants.hpp
 
+CMakeFiles/Tetris.dir/src/textures.cpp.o: ../src/textures.cpp \
+  /usr/include/stdc-predef.h
+
+
+../src/textures.cpp:
 
 ../src/interface.cpp:
 
