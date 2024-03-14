@@ -8,6 +8,11 @@
 #include "player.h"
 #include "constants.h"
 
+/*
+    This is the main from my previous Bomberman project, just to remember the order and the realisation of everything,
+         like taking inputs for exemple
+*/
+
 
 
 
