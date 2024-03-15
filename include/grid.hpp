@@ -9,6 +9,12 @@ class Grid {
     public:
         Grid(int h, int w);
         void affiche();
+
+        void deleteRow(int row);
+        std::vector<int> completedRows();
+        bool IsCellOutside(int row, int column);
+        bool isGameOver();
+
         //Tetromino* spawn(int color, int shape);
         //void delete_line(int line, Score score, int point_multiplier);
 };

@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <random>
-#include "grid.cpp"
-#include "tetromino.cpp"
+#include "../grid.hpp"
+#include "../tetromino.hpp"
 
 
 class Game 
