@@ -154,6 +154,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/game.o: src/game.cpp.o
+.PHONY : src/game.o
+
+# target to build an object file
+src/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/game.cpp.o
+.PHONY : src/game.cpp.o
+
+src/game.i: src/game.cpp.i
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
+
+src/game.s: src/game.cpp.s
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
+
 src/grid.o: src/grid.cpp.o
 .PHONY : src/grid.o
 
@@ -202,6 +226,30 @@ src/interface.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/interface.cpp.s
 .PHONY : src/interface.cpp.s
 
+src/tetromino.o: src/tetromino.cpp.o
+.PHONY : src/tetromino.o
+
+# target to build an object file
+src/tetromino.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/tetromino.cpp.o
+.PHONY : src/tetromino.cpp.o
+
+src/tetromino.i: src/tetromino.cpp.i
+.PHONY : src/tetromino.i
+
+# target to preprocess a source file
+src/tetromino.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/tetromino.cpp.i
+.PHONY : src/tetromino.cpp.i
+
+src/tetromino.s: src/tetromino.cpp.s
+.PHONY : src/tetromino.s
+
+# target to generate assembly for a file
+src/tetromino.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/tetromino.cpp.s
+.PHONY : src/tetromino.cpp.s
+
 src/textures.o: src/textures.cpp.o
 .PHONY : src/textures.o
 
@@ -238,12 +286,18 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
 	@echo "... src/grid.o"
 	@echo "... src/grid.i"
 	@echo "... src/grid.s"
 	@echo "... src/interface.o"
 	@echo "... src/interface.i"
 	@echo "... src/interface.s"
+	@echo "... src/tetromino.o"
+	@echo "... src/tetromino.i"
+	@echo "... src/tetromino.s"
 	@echo "... src/textures.o"
 	@echo "... src/textures.i"
 	@echo "... src/textures.s"
