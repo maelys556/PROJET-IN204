@@ -67,6 +67,10 @@ void Game::rotate() {
 }
 
 void Game::move(int nb_rows, int nb_columns) {
+    """
+    Cette fonction ne gère pas correctement les collisions et bloquage de tetrominos, il vaut mieux utiliser moveLeft,
+    moveDown et moveRight.
+    """
     currentBlock.RowOffset += nb_rows;
     currentBlock.ColumnOffset += nb_columns;
     if (IsBlockOutside() == true) {
@@ -87,7 +91,7 @@ void Game::moveRight() {
     }
     if (isCollision() == true) {
         currentBlock.ColumnOffset -= 1;
-        lockBlock(); // si le tetromino touche un tetromino bloqué alors il se bloque
+        //lockBlock(); // si le tetromino touche un tetromino bloqué à sa droite il peut tjrs move down
     }
 }
 
@@ -98,7 +102,7 @@ void Game::moveLeft() {
     }
     if (isCollision() == true) {
         currentBlock.ColumnOffset += 1;
-        lockBlock(); // si le tetromino touche un tetromino bloqué alors il se bloque
+        //lockBlock(); // si le tetromino touche un tetromino bloqué à sa gauche il peut tjrs move down
     }
 }
 
@@ -106,10 +110,11 @@ void Game::moveDown() {
     currentBlock.RowOffset += 1;  
     if (IsBlockOutside() == true) {
         currentBlock.RowOffset -= 1;
+        lockBlock(); // si le tetromino sort de la grille en bas, il se bloque
     }
     if (isCollision() == true) {
         currentBlock.RowOffset -= 1;
-        lockBlock(); // si le tetromino touche un tetromino bloqué alors il se bloque
+        lockBlock(); // si le tetromino touche un tetromino bloqué en-dessous de lui alors il se bloque
     }
 } 
 
