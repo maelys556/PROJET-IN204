@@ -8,6 +8,7 @@ set(OLD_GLOB
   "/home/guiscalbish/in204/src/game.cpp"
   "/home/guiscalbish/in204/src/grid.cpp"
   "/home/guiscalbish/in204/src/interface.cpp"
+  "/home/guiscalbish/in204/src/position.cpp"
   "/home/guiscalbish/in204/src/tetromino.cpp"
   "/home/guiscalbish/in204/src/textures.cpp"
   )
