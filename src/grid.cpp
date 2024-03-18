@@ -27,6 +27,7 @@ void Grid::affiche(){
 
 
 bool Grid::isGameOver(){
+    int width = g_matrix[0].size();
     for (int i=0; i<width; i++) {
         if (g_matrix[3][i]!= 0) {
             return true;
@@ -38,8 +39,8 @@ bool Grid::isGameOver(){
 
 
 bool Grid::IsCellOutside(int row, int column) {
-    width = g_matrix[0].size()
-    height = g_matrix.size()
+    int width = g_matrix[0].size();
+    int height = g_matrix.size();
     if (row < 0 || row >= width || column < 0 || column >= height) {
         return true;
     }
@@ -49,9 +50,10 @@ bool Grid::IsCellOutside(int row, int column) {
 
 
 std::vector<int> Grid::completedRows() {
-        """
-        Renvoie un vecteur avec les indices des lignes complétées et -1 si aucune ligne n'est complétée.
-        """
+        
+        //Renvoie un vecteur avec les indices des lignes complétées et -1 si aucune ligne n'est complétée.
+        int width = g_matrix[0].size();
+        int height = g_matrix.size();
         std::vector<int> res;
         int compteur = 0;
         for (int i=0; i<height; i++) {
@@ -79,7 +81,19 @@ void Grid::deleteRow(int row) {
             g_matrix[i][j] = g_matrix[i-1][j];
         }
     }
-    for (int j=0; j<width; j++) {
-        grid[0][j] = 0;
+    for (int j=0; j<g_matrix.size(); j++) {
+        g_matrix[0][j] = 0;
     }
+}
+
+
+
+bool Grid::isCellEmpty(int x, int y){
+    return g_matrix[x][y]==0;
+}
+
+
+
+void Grid::setCellTo(int x, int y, int val){
+    g_matrix[x][y]=val;
 }

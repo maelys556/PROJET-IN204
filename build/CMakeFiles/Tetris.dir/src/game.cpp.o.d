@@ -300,6 +300,4 @@ CMakeFiles/Tetris.dir/src/game.cpp.o: \
  /home/guiscalbish/in204/src/../include/constants.hpp \
  /home/guiscalbish/in204/src/../include/tetromino.hpp \
  /home/guiscalbish/in204/src/../include/position.hpp \
- /home/guiscalbish/in204/src/../include/game.hpp \
- /home/guiscalbish/in204/src/../include/grid.hpp \
- /home/guiscalbish/in204/src/../include/tetromino.hpp
+ /home/guiscalbish/in204/src/../include/game.hpp
