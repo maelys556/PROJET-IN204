@@ -5,11 +5,10 @@
 #include "../include/tetromino.hpp"
 #include "../include/game.hpp"
 
-Game::Game(int aCurrent_id) : current_id(aCurrent_id)
+Game::Game(int aCurrent_id) : current_id(aCurrent_id), grid(10,20)
 {
-    grid = Grid(10, 20);
     //current_id = aCurrent_id;
-    //currentBlock = Tetromino(0, 0); 
+    currentBlock = Tetromino(0, 0); 
 }
 
 Tetromino Game::getNewBlock(int next_id) {
@@ -116,7 +115,7 @@ void Game::moveDown() {
 void Game::lockBlock() {
     std::vector<Position> cells = currentBlock.getCells();
     for (int i=0; i<cells.size(); i++) {
-        grid.grid[cells[i].x][cells[i].y] = currentBlock.id;
+        grid.setCellTo(cells[i].x,cells[i].y,currentBlock.id);
     }
     currentBlock = getNewBlock(2); // //!\\ il faut mettre un entier aléatoire
 }
@@ -124,7 +123,8 @@ void Game::lockBlock() {
 bool Game::isCollision() { // Ajouter la gestion des collisions dans les méthodes rotate et move !!!!!
     std::vector<Position> cells = currentBlock.getCells();
     for (int i=0; i<cells.size(); i++) {
-        if (grid.grid[cells[i].x][cells[i].y]!= 0) {
+        const Position& cell = cells[i];
+        if (not grid.isCellEmpty(cell.x, cell.y)){
             return true;
         }
     }

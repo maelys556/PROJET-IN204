@@ -1,6 +1,7 @@
+#pragma once
 #include <iostream>
 #include <vector>
-#include "position.cpp"
+#include "position.hpp"
 
 class Tetromino {
     public:
