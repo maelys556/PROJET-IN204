@@ -76,7 +76,6 @@ void Interface::texture_load_blocks(SDL_Texture* blocktextures[]){
 void Interface::render_blocks(SDL_Texture* blocktextures[]){
     int width, height;
     SDL_GetWindowSize(i_window, &width, &height);
-    printf("%d and %d\n", height, width);
 
     SDL_Rect tile_rect = (SDL_Rect){ 0, 0, width/25, height/25 };
     SDL_RenderCopyEx(i_renderer, blocktextures[0], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);

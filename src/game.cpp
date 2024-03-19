@@ -5,7 +5,7 @@
 #include "../include/tetromino.hpp"
 #include "../include/game.hpp"
 
-Game::Game(int aCurrent_id) : current_id(aCurrent_id), grid(10,20)
+Game::Game(int size_X, int size_Y) :grid(size_X, size_Y)
 {
     //current_id = aCurrent_id;
     currentBlock = Tetromino(0, 0); 
