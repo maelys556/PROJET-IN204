@@ -2,8 +2,9 @@
 #include <SDL.h>
 
 #include "../include/interface.hpp"
-
+#include "../include/game.hpp"
 #include "../include/constants.hpp"
+#include "../include/tetromino.hpp"
 
 
 Interface::Interface(){
@@ -32,10 +33,10 @@ bool Interface::inter_init(){
     return true;
 };
 
-void Interface::inter_update(SDL_Texture* blocktextures[]){
+void Interface::inter_update(Game& current_game, SDL_Texture* blocktextures[]){
     SDL_RenderClear(i_renderer);
     // Here we will had anything we have to render, the background, grid shape, score and most importantly the blocks
-    render_blocks(blocktextures);
+    render_blocks(current_game, blocktextures);
     
     SDL_RenderPresent(i_renderer);
 }
@@ -73,10 +74,25 @@ void Interface::texture_load_blocks(SDL_Texture* blocktextures[]){
     SDL_FreeSurface(sheet);
 }
 
-void Interface::render_blocks(SDL_Texture* blocktextures[]){
+void Interface::render_blocks(Game& current_game, SDL_Texture* blocktextures[]){
     int width, height;
     SDL_GetWindowSize(i_window, &width, &height);
 
-    SDL_Rect tile_rect = (SDL_Rect){ 0, 0, width/25, height/25 };
-    SDL_RenderCopyEx(i_renderer, blocktextures[0], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);
+    int x_border = (width /2) /2;
+    int y_border = (height /2) /5;
+    int x_size = (width - 2*x_border)/GRID_SIZE_X;
+    int y_size = (height - 2*y_border)/GRID_SIZE_Y;
+
+
+
+    for (int i=0; i<GRID_SIZE_X, i++;){
+        for (int j=4; j<GRID_SIZE_Y, j++;){
+            int val = current_game.grid.get(i,j);
+            //if(val!=0){
+                //k + j*NUM_POWERS + i*NUM_BLOCK_SPRITES*NUM_POWERS
+                SDL_Rect tile_rect = (SDL_Rect){x_border + i*x_size, y_border + j*y_size, x_size, y_size };            
+                SDL_RenderCopyEx(i_renderer, blocktextures[i], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);
+            //}
+        }
+    }
 }

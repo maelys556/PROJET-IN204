@@ -1,3 +1,0 @@
-/home/maelys/IN204/build/CMakeFiles/Tetris.dir
-/home/maelys/IN204/build/CMakeFiles/edit_cache.dir
-/home/maelys/IN204/build/CMakeFiles/rebuild_cache.dir
