@@ -7,6 +7,7 @@
 class Grid {
     private:
         std::vector<std::vector<int>> g_matrix;
+        int g_score;
     public:
         Grid(int h, int w);
         void affiche();

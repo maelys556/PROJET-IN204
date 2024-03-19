@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/guiscalbish/in204/SDL2Test -I/usr/include/SDL2
+CXX_INCLUDES = -I/home/maelys/IN204/include
 
 CXX_FLAGS = 
 

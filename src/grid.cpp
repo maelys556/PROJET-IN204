@@ -11,6 +11,7 @@ Grid::Grid(int h, int w) {
     for (int i = 0; i < h; ++i) {
         g_matrix[i].resize(w, 0);
     }
+    g_score = 0;
 }
 
 
@@ -51,27 +52,50 @@ bool Grid::IsCellOutside(int row, int column) {
 
 std::vector<int> Grid::completedRows() {
         
-        //Renvoie un vecteur avec les indices des lignes complétées et -1 si aucune ligne n'est complétée.
-        int width = g_matrix[0].size();
-        int height = g_matrix.size();
-        std::vector<int> res;
-        int compteur = 0;
-        for (int i=0; i<height; i++) {
-            compteur = 0;
-            for (int j=0; j<width; j++) {
-                if (g_matrix[i][j] != 0) {
-                    compteur += 1;
-                }
-            }
-            if (compteur == width) {
-                res.push_back(i);
+    //Renvoie un vecteur avec les indices des lignes complétées et -1 si aucune ligne n'est complétée.
+    int width = g_matrix[0].size();
+    int height = g_matrix.size();
+    std::vector<int> res;
+    int compteur = 0;
+    for (int i=0; i<height; i++) {
+        compteur = 0;
+        for (int j=0; j<width; j++) {
+            if (g_matrix[i][j] != 0) {
+                compteur += 1;
             }
         }
-        if (res.size() == 0) {
-            res.push_back(-1);
+        if (compteur == width) {
+            res.push_back(i);
         }
-        return res;
     }
+    if (res.size() == 0) {
+        res.push_back(-1);
+    }
+    return res;
+}
+
+void Grid::updateScore() {
+    std::vector<int> completed_rows = completedRows();
+    int multiplicity = 0;
+    for (int i=0; i<completed_rows.size(); i++) {
+        if (completed_rows[i] == completed_rows[i+1]) {
+            multiplicity += 1;
+        }
+    }
+    if (multiplicity == 0) {
+        g_score += 40*completed_rows.size();
+    }
+    if (multiplicity == 1) { // si 2 lignes sont supprimées d'un coup le score augmente de 100 pour ces 2 lignes + 40
+                                // pour les autres lignes si il y en a
+        g_score += 100 + 40*(completed_rows.size()-2);
+    }
+    if (multiplicity == 2) { // si 2 lignes successives sont supprimées d'un coup le score augmente de 100
+        g_score += 300 + 40*(completed_rows.size()-3);
+    }
+    if (multiplicity == 3) { // le max est de 4 lignes successives
+        g_score += 1200 + 40*(completed_rows.size()-4);
+    }
+}
 
 
 

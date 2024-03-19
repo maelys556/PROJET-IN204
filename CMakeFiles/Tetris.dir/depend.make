@@ -1,2 +1,2 @@
-# Empty dependencies file for main1.
+# Empty dependencies file for Tetris.
 # This may be replaced when dependencies are built.

@@ -22,6 +22,34 @@ int main(int argc, char* argv[]){
 // loading all textures
     SDL_Texture* blocktextures[NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS];
     interface.texture_load_blocks(blocktextures);
+    
+    Game game(GRID_SIZE_X, GRID_SIZE_Y);
+
+    //ici maelouille ! -------------------------------------------------------------------------------------------------
+    
+    /* Au début, on prend un nb aléatoire et on créer un nouveau block (le block construit par défaut dans Game est 
+    un Tetromino mais nous on veut un tetromino plus spécifique comme IBlock etc)
+    Ensuite les nouveaux tetrominos sont directement créés qd un bloc est verouillé. */
+
+    game.currentBlock = game.getNewBlock(); // getNewBlock() renvoie un tetromino aléatoire parmi les 7 formes
+
+    //////////// Dans la boucle : /////////////////////////
+    /* - Vérifier les inputs : utiliser game.moveLeft(), game.moveRight(), game.moveDown(), game.rotate() et 
+    game.undoRotation() si une rotation inverse est possible dans Tetris (jsp), bloquer le tetromino si l'utilisateur
+    veut le faire descendre rapidement avec game.moveDownFast()
+    - Faire descendre le bloc avec moveDown() à chaque période de temps
+    - Afficher la grille + tetromino à chaque période de temps
+    - vérifier à chaque période de temps si une ligne est complète avec game.grid.completedRows()
+    - si une/des ligne est complète actualiser le score avec updateScore() dans classe Grid
+        et supprimer les lignes complètes avec deleteRow(row) dans classe Grid
+        std::vector<int> completed_rows = grid.completedRows();
+        for (int i=0; i<completed_rows.size(); i++) {
+            deleteRow(completed_rows[i]); avec completed_rows[i] qui est l'indice de la ligne à supprimer
+        }
+    - créer un nouveau tetromino avec game.currentBlock = game.getNewBlock() (au final je fais une fonction séparée, je l'enlève de la
+    fonction lockBlock() car sinon je pense qu'on va avoir des problèmes de timing).
+    */
+    
 
     //end-------------------------------------------------------------------------------------------------------------
 
