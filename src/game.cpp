@@ -11,12 +11,13 @@ Game::Game(int size_X, int size_Y) :grid(size_X, size_Y)
     currentBlock = Tetromino(0, 0); 
 }
 
-Tetromino Game::getNewBlock(int next_id) {
-    /*std::random_device rd;
+Tetromino Game::getNewBlock() {
+
+    std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(0,6);
-    int next_id = dis(gen);
-    */
+    std::uniform_int_distribution<> dist(0,6);
+    next_id = dist(gen);         // apparemment pas besoin de time() ou truc du genre
+
     if (next_id == 0) {
         return IBlock(0, 0);
     }
@@ -61,7 +62,7 @@ void Game::rotate() {
         undoRotation();
     }
     if (isCollision() == true) {
-        lockBlock(); // si le tetromino touche un tetromino bloqué alors il se bloque
+        undoRotation(); 
     }
 }
 
@@ -122,7 +123,13 @@ void Game::lockBlock() {
     for (int i=0; i<cells.size(); i++) {
         grid.setCellTo(cells[i].x,cells[i].y,currentBlock.id);
     }
-    currentBlock = getNewBlock(2); // //!\\ il faut mettre un entier aléatoire
+}
+
+void Game::moveDownFast() {
+    while (IsBlockOutside() == false && isCollision() == false) {
+        moveDown();
+    }
+    lockBlock();
 }
 
 bool Game::isCollision() { // Ajouter la gestion des collisions dans les méthodes rotate et move !!!!!
