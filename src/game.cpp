@@ -127,8 +127,9 @@ void Game::lockBlock() {
 
 void Game::moveDownFast() {
     while (IsBlockOutside() == false && isCollision() == false) {
-        moveDown();
+        currentBlock.RowOffset += 1;
     }
+    currentBlock.RowOffset -= 1;
     lockBlock();
 }
 

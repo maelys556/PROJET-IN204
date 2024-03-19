@@ -1,4 +1,4 @@
-# Install script for directory: /home/guiscalbish/in204
+# Install script for directory: /home/maelys/IN204
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/guiscalbish/in204/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/maelys/IN204/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

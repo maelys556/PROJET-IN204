@@ -8,13 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/guiscalbish/in204/main.cpp" "CMakeFiles/Tetris.dir/main.cpp.o" "gcc" "CMakeFiles/Tetris.dir/main.cpp.o.d"
-  "/home/guiscalbish/in204/src/game.cpp" "CMakeFiles/Tetris.dir/src/game.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/game.cpp.o.d"
-  "/home/guiscalbish/in204/src/grid.cpp" "CMakeFiles/Tetris.dir/src/grid.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/grid.cpp.o.d"
-  "/home/guiscalbish/in204/src/interface.cpp" "CMakeFiles/Tetris.dir/src/interface.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/interface.cpp.o.d"
-  "/home/guiscalbish/in204/src/position.cpp" "CMakeFiles/Tetris.dir/src/position.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/position.cpp.o.d"
-  "/home/guiscalbish/in204/src/tetromino.cpp" "CMakeFiles/Tetris.dir/src/tetromino.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/tetromino.cpp.o.d"
-  "/home/guiscalbish/in204/src/textures.cpp" "CMakeFiles/Tetris.dir/src/textures.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/textures.cpp.o.d"
+  "/home/maelys/IN204/main.cpp" "CMakeFiles/Tetris.dir/main.cpp.o" "gcc" "CMakeFiles/Tetris.dir/main.cpp.o.d"
+  "/home/maelys/IN204/src/game.cpp" "CMakeFiles/Tetris.dir/src/game.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/game.cpp.o.d"
+  "/home/maelys/IN204/src/grid.cpp" "CMakeFiles/Tetris.dir/src/grid.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/grid.cpp.o.d"
+  "/home/maelys/IN204/src/interface.cpp" "CMakeFiles/Tetris.dir/src/interface.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/interface.cpp.o.d"
+  "/home/maelys/IN204/src/position.cpp" "CMakeFiles/Tetris.dir/src/position.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/position.cpp.o.d"
+  "/home/maelys/IN204/src/tetromino.cpp" "CMakeFiles/Tetris.dir/src/tetromino.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/tetromino.cpp.o.d"
+  "/home/maelys/IN204/src/textures.cpp" "CMakeFiles/Tetris.dir/src/textures.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/textures.cpp.o.d"
   )
 
 # Targets to which this target links.

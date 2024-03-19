@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/guiscalbish/in204
+CMAKE_SOURCE_DIR = /home/maelys/IN204
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/guiscalbish/in204/build
+CMAKE_BINARY_DIR = /home/maelys/IN204/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/Tetris.dir/clean
 CMakeFiles/Tetris.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/guiscalbish/in204/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target Tetris"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maelys/IN204/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target Tetris"
 .PHONY : CMakeFiles/Tetris.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Tetris.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/guiscalbish/in204/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maelys/IN204/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Tetris.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/guiscalbish/in204/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maelys/IN204/build/CMakeFiles 0
 .PHONY : CMakeFiles/Tetris.dir/rule
 
 # Convenience name for target.
@@ -107,7 +107,7 @@ CMakeFiles/Tetris.dir/clean:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /home/guiscalbish/in204/build/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /home/maelys/IN204/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
