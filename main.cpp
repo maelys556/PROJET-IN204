@@ -2,9 +2,12 @@
 #include <SDL.h>
 
 #include <iostream>
+
 #include "include/interface.hpp"
 #include "include/grid.hpp"
 #include "include/constants.hpp"
+#include "include/game.hpp"
+#include "include/tetromino.hpp"
 
 int main(int argc, char* argv[]){
 
@@ -20,15 +23,48 @@ int main(int argc, char* argv[]){
     SDL_Texture* blocktextures[NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS];
     interface.texture_load_blocks(blocktextures);
     
-    
+    Game game(GRID_SIZE_X, GRID_SIZE_Y);
+
+    //ici maelouille !
     
     //end-------------------------------------------------------------------------------------------------------------
 
     // tests
-    int boucle = 350;
-    while (boucle>0){
+    bool game_ended = true;
+    bool running = true;
+    int move_x = 0;
+    int move_y = 0;
+    int move_rotate = 0;
+    int fall_mode = 0;
+    
+    // Game loop
+    while (running) {
+
+        // Handle events
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            if (event.type==SDL_QUIT){
+                running=0;
+            }
+            if (event.type==SDL_KEYDOWN && not game_ended){
+                if (event.key.keysym.sym==SDLK_LEFT){move_x = -1;}
+                if (event.key.keysym.sym==SDLK_RIGHT){move_x = 1;}
+                if (event.key.keysym.sym==SDLK_UP){move_rotate = -1;}
+                if (event.key.keysym.sym==SDLK_DOWN){move_y = 1;}
+                if (event.key.keysym.sym==SDLK_SPACE){fall_mode = 1;}
+            if (event.type==SDL_KEYUP){
+                if ((move_x == -1)&&(event.key.keysym.sym==SDLK_LEFT)){move_x = 0;}
+                if ((move_x == 1)&&(event.key.keysym.sym==SDLK_RIGHT)){move_x = 0;}
+                if ((move_y == 1)&&(event.key.keysym.sym==SDLK_DOWN)){move_y = 0;}
+            }
+        }
+
+
+
+
         interface.inter_update(blocktextures);
-        boucle-=1;
+
+    }
     }
 };
 
