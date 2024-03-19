@@ -11,9 +11,15 @@
 #define NUM_TILES_X (SCREEN_WIDTH / TILE_SIZE)
 #define NUM_TILES_Y (SCREEN_HEIGHT / TILE_SIZE)
 
+
+// SPITES constants
 #define NUM_BLOCK_SPRITES 3
 #define NUM_LEVELS 10
 #define NUM_POWERS 3
+
+// GRID constants
+#define GRID_SIZE_X 10
+#define GRID_SIZE_Y 24
 
 
 

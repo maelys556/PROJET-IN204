@@ -11,7 +11,7 @@ class Game {
     int current_id;     // 0 = I, 1 = J, 2 = L, 3 = O, 4 = S, 5 = T, 6 = Z
     Tetromino currentBlock = Tetromino(0,0); 
 
-    Game(int aCurrent_id);
+    Game(int size_X, int size_Y);
 
     Tetromino getNewBlock(int next_id);
     bool IsBlockOutside();
