@@ -11,31 +11,24 @@
 
 int main(int argc, char* argv[]){
 
-    Grid grid(5,7);
-    grid.affiche();
-
-
     // reel code
+    int tick = 0;
     Interface interface;
     interface.inter_init();
+
+    Game current_game(GRID_SIZE_X, GRID_SIZE_Y);
+    current_game.getNewBlock(1);
 
 // loading all textures
     SDL_Texture* blocktextures[NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS];
     interface.texture_load_blocks(blocktextures);
-    
-    Game game(GRID_SIZE_X, GRID_SIZE_Y);
 
-    //ici maelouille !
-    
     //end-------------------------------------------------------------------------------------------------------------
 
     // tests
-    bool game_ended = true;
+    bool game_ended = false;
     bool running = true;
-    int move_x = 0;
-    int move_y = 0;
-    int move_rotate = 0;
-    int fall_mode = 0;
+    int move_x(0) , move_y(0) , move_rotate(0), fall_mode(0); 
     
     // Game loop
     while (running) {
@@ -49,7 +42,7 @@ int main(int argc, char* argv[]){
             if (event.type==SDL_KEYDOWN && not game_ended){
                 if (event.key.keysym.sym==SDLK_LEFT){move_x = -1;}
                 if (event.key.keysym.sym==SDLK_RIGHT){move_x = 1;}
-                if (event.key.keysym.sym==SDLK_UP){move_rotate = -1;}
+                if (event.key.keysym.sym==SDLK_UP){move_rotate = 1;}
                 if (event.key.keysym.sym==SDLK_DOWN){move_y = 1;}
                 if (event.key.keysym.sym==SDLK_SPACE){fall_mode = 1;}
             if (event.type==SDL_KEYUP){
@@ -58,13 +51,40 @@ int main(int argc, char* argv[]){
                 if ((move_y == 1)&&(event.key.keysym.sym==SDLK_DOWN)){move_y = 0;}
             }
         }
+        }
+        current_game.grid.affiche();
+        tick +=1;
+        std::cout << tick;
+        if (tick%50==0){
+            if (move_x==-1){
+                current_game.moveLeft();
+            }
+            std::cout << "a";
+            if (move_x==1){
+                current_game.moveRight();
+            }
+            std::cout << "b";
+            if (move_y==1){
+                current_game.moveDown();
+            std::cout << "c";
+            }
+        }
+        if (tick%10==0){
+            if(move_rotate==1){
+                current_game.rotate();
+            }
+            std::cout << "d";
+        }
+        if ((tick+25)%50==0){
+            current_game.moveDown();
+        }
+        std::cout << "e";
 
+        
 
-
-
-        interface.inter_update(blocktextures);
-
-    }
+        interface.inter_update(current_game, blocktextures);
+        
+        std::cout << "f" << std::endl;
     }
 };
 

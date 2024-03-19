@@ -97,3 +97,8 @@ bool Grid::isCellEmpty(int x, int y){
 void Grid::setCellTo(int x, int y, int val){
     g_matrix[x][y]=val;
 }
+
+
+int Grid::get(int x, int y){
+    return(g_matrix[x][y]);
+};

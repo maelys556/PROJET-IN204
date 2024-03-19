@@ -3,6 +3,8 @@
 #include <SDL.h>
 
 #include "constants.hpp"
+#include "game.hpp"
+#include "tetromino.hpp"
 
 class Interface {
     private:
@@ -11,8 +13,8 @@ class Interface {
     public:
         Interface();
         bool inter_init();
-        void inter_update(SDL_Texture* blocktextures[]);
+        void inter_update(Game& current_game, SDL_Texture* blocktextures[]);
         void texture_load_blocks(SDL_Texture* blocktextures[]);
-        void render_blocks(SDL_Texture* blocktextures[]);
+        void render_blocks(Game& current_game, SDL_Texture* blocktextures[]);
         ~Interface();
 };

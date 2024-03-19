@@ -17,6 +17,7 @@ class Grid {
         bool isGameOver();
         bool isCellEmpty(int x, int y);
         void setCellTo(int x, int y, int val);
+        int get(int x, int y);
 
         //Tetromino* spawn(int color, int shape);
         //void delete_line(int line, Score score, int point_multiplier);
