@@ -10,49 +10,50 @@ class Tetromino {
     int orientation;
     int RowOffset;
     int ColumnOffset;
+    int t_power;
     std::vector<std::vector<Position>> cells = std::vector<std::vector<Position>>(4);
 
-    Tetromino(int anId, int anOrientation);
+    Tetromino(int anId, int anOrientation, int aPower);
     std::vector<Position> getCells();
     void printTetromino();
 };
 
 
 class TBlock : public Tetromino {
-    public :
-    TBlock(int anId, int anOrientation);
+public:
+    TBlock(int anId, int anOrientation, int aPower);
 };
 
 class LBlock : public Tetromino {
-    public:
-    LBlock(int anId, int anOrientation);
+public:
+    LBlock(int anId, int anOrientation, int aPower);
 };
 
 
 class JBlock : public Tetromino {
-    public:
-    JBlock(int anId, int anOrientation);
+public:
+    JBlock(int anId, int anOrientation, int aPower);
 };
 
 class OBlock : public Tetromino {
-    public:
-    OBlock(int anId, int anOrientation);
+public:
+    OBlock(int anId, int anOrientation, int aPower);
 };
 
 
 class SBlock : public Tetromino {
-    public:
-    SBlock(int anId, int anOrientation);
+public:
+    SBlock(int anId, int anOrientation, int aPower);
 };
 
 
 class ZBlock : public Tetromino {
-    public:
-    ZBlock(int anId, int anOrientation);
+public:
+    ZBlock(int anId, int anOrientation, int aPower);
 };
 
 
 class IBlock : public Tetromino {
-    public:
-    IBlock(int anId, int anOrientation);
+public:
+    IBlock(int anId, int anOrientation, int aPower);
 };

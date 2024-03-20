@@ -57,7 +57,6 @@ int main(int argc, char* argv[]){
     bool game_ended = false;
     bool running = true;
     int move_x(0) , move_y(0) , move_rotate(0);
-    bool down_fast_mode = false; 
     
     // Game loop
     while (running) {
@@ -73,7 +72,7 @@ int main(int argc, char* argv[]){
                 if (event.key.keysym.sym==SDLK_RIGHT){move_x = 1;}
                 if (event.key.keysym.sym==SDLK_UP){move_rotate = 1;}
                 if (event.key.keysym.sym==SDLK_DOWN){move_y = 1;}
-                if (event.key.keysym.sym==SDLK_SPACE){down_fast_mode = true;}
+                if (event.key.keysym.sym==SDLK_SPACE){current_game.fast_mode = true;}
             if (event.type==SDL_KEYUP){
                 if ((move_x == -1)&&(event.key.keysym.sym==SDLK_LEFT)){move_x = 0;}
                 if ((move_x == 1)&&(event.key.keysym.sym==SDLK_RIGHT)){move_x = 0;}
@@ -102,6 +101,7 @@ int main(int argc, char* argv[]){
         if (tick%10==0){
             if(move_rotate==1){
                 current_game.rotate();
+                move_rotate = false;
             }
           //  std::cout << "d";
         }
@@ -109,7 +109,7 @@ int main(int argc, char* argv[]){
             current_game.moveDown();
         }
         //std::cout << "e";
-        if (down_fast_mode){
+        if (current_game.fast_mode){
             current_game.moveDown();
         }
 

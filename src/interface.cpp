@@ -111,7 +111,9 @@ void Interface::render_blocks(Game& current_game, SDL_Texture* blocktextures[]){
     for (int i=0; i<cells.size(); i++){
         int x = cells[i].x;
         int y = cells[i].y;
+        if (y>=4){
         SDL_Rect tile_rect = (SDL_Rect){x_border + x*x_size, y_border + y*y_size, x_size, y_size };            
         SDL_RenderCopyEx(i_renderer, blocktextures[i], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);
+        }
     }
 }

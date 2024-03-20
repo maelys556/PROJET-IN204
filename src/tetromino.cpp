@@ -6,8 +6,8 @@
 
 
 
-Tetromino::Tetromino(int anId, int anOrientation) :
-id(anId), orientation(anOrientation), RowOffset(0), ColumnOffset((NUM_TILES_X-1)/2) {
+Tetromino::Tetromino(int anId, int anOrientation, int aPower) :
+id(anId), orientation(anOrientation), RowOffset((GRID_SIZE_X-1)/2), ColumnOffset(0), t_power(aPower) {
     for (int i = 0 ; i < 4 ; i++) {
         cells[i].resize(4, Position(0,0));
     }
@@ -32,68 +32,55 @@ void Tetromino::printTetromino() {
 }
 
 
-TBlock::TBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
-    //id = 5;
+TBlock::TBlock(int anId, int anOrientation, int aPower) : Tetromino(anId, anOrientation, aPower) {
     cells[0] = {Position(1,1), Position(2,0), Position(2,1), Position(2,2)};
     cells[1] = {Position(0,0), Position(1,0), Position(1,1), Position(2,0)};
     cells[2] = {Position(0,0), Position(0,1), Position(0,2), Position(1,1)};
     cells[3] = {Position(0,2), Position(1,1), Position(1,2), Position(2,2)};
 }
 
-
-LBlock::LBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
-    //id=2;
+LBlock::LBlock(int anId, int anOrientation, int aPower) : Tetromino(anId, anOrientation, aPower) {
     cells[0] = {Position(0,0), Position(1,0), Position(2,0), Position(2,0)};
     cells[1] = {Position(0,0), Position(0,1), Position(0,2), Position(1,0)};
     cells[2] = {Position(0,1), Position(0,2), Position(1,2), Position(2,2)};
     cells[3] = {Position(1,2), Position(2,0), Position(2,1), Position(2,2)};
 }
 
-
-JBlock::JBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
-    //id =1;
+JBlock::JBlock(int anId, int anOrientation, int aPower) : Tetromino(anId, anOrientation, aPower) {
     cells[0] = {Position(0,2), Position(1,2), Position(2,1), Position(2,2)};
     cells[1] = {Position(1,0), Position(2,0), Position(2,1), Position(2,2)};
     cells[2] = {Position(0,0), Position(0,1), Position(1,0), Position(2,0)};
     cells[3] = {Position(0,0), Position(0,1), Position(0,2), Position(1,2)};
 }
 
-
-
-OBlock::OBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
-    //id = 3;
+OBlock::OBlock(int anId, int anOrientation, int aPower) : Tetromino(anId, anOrientation, aPower) {
     cells[0] = {Position(0,0), Position(0,1), Position(1,0), Position(1,1)};
     cells[1] = {Position(0,0), Position(0,1), Position(1,0), Position(1,1)};
     cells[2] = {Position(0,0), Position(0,1), Position(1,0), Position(1,1)};
     cells[3] = {Position(0,0), Position(0,1), Position(1,0), Position(1,1)};
 }
 
-
-SBlock::SBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
-    //id = 4;
+SBlock::SBlock(int anId, int anOrientation, int aPower) : Tetromino(anId, anOrientation, aPower) {
     cells[0] = {Position(0,1), Position(0,2), Position(1,0), Position(1,1)};
     cells[1] = {Position(0,0), Position(1,0), Position(1,1), Position(2,1)};
     cells[2] = {Position(1,1), Position(1,2), Position(2,0), Position(2,1)};
     cells[3] = {Position(0,1), Position(1,1), Position(1,2), Position(2,2)};
 }
 
-
-ZBlock::ZBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
-    //id = 6;
+ZBlock::ZBlock(int anId, int anOrientation, int aPower) : Tetromino(anId, anOrientation, aPower) {
     cells[0] = {Position(0,0), Position(0,1), Position(1,1), Position(1,2)};
     cells[1] = {Position(0,1), Position(1,0), Position(1,1), Position(2,0)};
     cells[2] = {Position(1,0), Position(1,1), Position(2,1), Position(2,2)};
     cells[3] = {Position(0,2), Position(1,1), Position(1,2), Position(2,1)};
 }
 
-
-IBlock::IBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
-    //id = 0;
+IBlock::IBlock(int anId, int anOrientation, int aPower) : Tetromino(anId, anOrientation, aPower) {
     cells[0] = {Position(0,1), Position(1,1), Position(2,1), Position(3,1)};
     cells[1] = {Position(1,0), Position(1,1), Position(1,2), Position(1,3)};
     cells[2] = {Position(0,2), Position(1,2), Position(2,2), Position(3,2)};
     cells[3] = {Position(2,0), Position(2,1), Position(2,2), Position(2,3)};
 }
+
 
 
     /*
