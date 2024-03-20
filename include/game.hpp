@@ -13,7 +13,7 @@ class Game {
 
     Game(int size_X, int size_Y);
 
-    Tetromino getNewBlock(int next_id);
+    Tetromino getNewBlock();
     bool IsBlockOutside();
     void undoRotation();
     void rotate();
@@ -23,4 +23,5 @@ class Game {
     void moveDown();
     void lockBlock();
     bool isCollision();
+    void moveDownFast();
 };

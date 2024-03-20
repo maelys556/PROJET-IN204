@@ -19,7 +19,7 @@ Grid::Grid(int h, int w) {
 void Grid::affiche(){
     for (int i=0; i<g_matrix.size(); ++i){
         for (int j=0; j<g_matrix[0].size(); ++j){
-            std::cout << g_matrix[i][j];
+            std::cout << g_matrix[i][j] << " ";
         }
         std::cout << std::endl;
     }
@@ -28,8 +28,8 @@ void Grid::affiche(){
 
 
 bool Grid::isGameOver(){
-    int width = g_matrix[0].size();
-    for (int i=0; i<width; i++) {
+    int height = g_matrix[0].size();
+    for (int i=0; i<height; i++) {
         if (g_matrix[3][i]!= 0) {
             return true;
         }
@@ -40,9 +40,9 @@ bool Grid::isGameOver(){
 
 
 bool Grid::IsCellOutside(int row, int column) {
-    int width = g_matrix[0].size();
     int height = g_matrix.size();
-    if (row < 0 || row >= width || column < 0 || column >= height) {
+    int width = g_matrix[0].size();
+    if (row < 0 || row >= height || column < 0 || column >= width) {
         return true;
     }
     return false;

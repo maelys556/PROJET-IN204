@@ -12,20 +12,20 @@ Game::Game(int size_X, int size_Y) :grid(size_X, size_Y)
 }
 
 Tetromino Game::getNewBlock() {
-
+// 0 = I, 1 = J, 2 = L, 3 = O, 4 = S, 5 = T, 6 = Z
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dist(0,6);
-    next_id = dist(gen);         // apparemment pas besoin de time() ou truc du genre
-
+    int next_id = dist(gen);         // apparemment pas besoin de time() ou truc du genre
+    currentBlock.id = next_id;
     if (next_id == 0) {
         return IBlock(0, 0);
     }
         else if (next_id == 1) {
-            return LBlock(1, 0);
+            return JBlock(1, 0);
         }
         else if (next_id == 2) {
-            return JBlock(2, 0);
+            return LBlock(2, 0);
         }
         else if (next_id == 3) {
             return OBlock(3, 0);
@@ -67,10 +67,10 @@ void Game::rotate() {
 }
 
 void Game::move(int nb_rows, int nb_columns) {
-    """
-    Cette fonction ne gère pas correctement les collisions et bloquage de tetrominos, il vaut mieux utiliser moveLeft,
-    moveDown et moveRight.
-    """
+    //"""
+    //Cette fonction ne gère pas correctement les collisions et bloquage de tetrominos, il vaut mieux utiliser moveLeft,
+    //moveDown et moveRight.
+    //"""
     currentBlock.RowOffset += nb_rows;
     currentBlock.ColumnOffset += nb_columns;
     if (IsBlockOutside() == true) {

@@ -5,7 +5,7 @@
 
 
 
-Tetromino::Tetromino(int anId, int anOrientation) :
+Tetromino::Tetromino(int anId, int anOrientation) : // 0 = I, 1 = J, 2 = L, 3 = O, 4 = S, 5 = T, 6 = Z
 id(anId), orientation(anOrientation), RowOffset(0), ColumnOffset(0) {
     for (int i = 0 ; i < 4 ; i++) {
         cells[i].resize(4, Position(0,0));
@@ -42,7 +42,7 @@ TBlock::TBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
 
 LBlock::LBlock(int anId, int anOrientation) : Tetromino(anId, anOrientation) {
     //id=2;
-    cells[0] = {Position(0,0), Position(1,0), Position(2,0), Position(2,0)};
+    cells[0] = {Position(0,0), Position(1,0), Position(2,0), Position(2,1)};
     cells[1] = {Position(0,0), Position(0,1), Position(0,2), Position(1,0)};
     cells[2] = {Position(0,1), Position(0,2), Position(1,2), Position(2,2)};
     cells[3] = {Position(1,2), Position(2,0), Position(2,1), Position(2,2)};
