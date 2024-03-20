@@ -17,10 +17,10 @@ int main(int argc, char* argv[]){
     interface.inter_init();
 
     Game current_game(GRID_SIZE_X, GRID_SIZE_Y);
-    current_game.getNewBlock(1);
+    current_game.getNewBlock();
 
 // loading all textures
-    SDL_Texture* blocktextures[NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS];
+    SDL_Texture* blocktextures[NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS + 1];
     interface.texture_load_blocks(blocktextures);
     
     Game game(GRID_SIZE_X, GRID_SIZE_Y);
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]){
     un Tetromino mais nous on veut un tetromino plus spécifique comme IBlock etc)
     Ensuite les nouveaux tetrominos sont directement créés qd un bloc est verouillé. */
 
-    game.currentBlock = game.getNewBlock(); // getNewBlock() renvoie un tetromino aléatoire parmi les 7 formes
+    //game.currentBlock = game.getNewBlock(); // getNewBlock() renvoie un tetromino aléatoire parmi les 7 formes
 
     //////////// Dans la boucle : /////////////////////////
     /* - Vérifier les inputs : utiliser game.moveLeft(), game.moveRight(), game.moveDown(), game.rotate() et 
@@ -56,7 +56,8 @@ int main(int argc, char* argv[]){
     // tests
     bool game_ended = false;
     bool running = true;
-    int move_x(0) , move_y(0) , move_rotate(0), fall_mode(0); 
+    int move_x(0) , move_y(0) , move_rotate(0);
+    bool down_fast_mode = false; 
     
     // Game loop
     while (running) {
@@ -72,47 +73,51 @@ int main(int argc, char* argv[]){
                 if (event.key.keysym.sym==SDLK_RIGHT){move_x = 1;}
                 if (event.key.keysym.sym==SDLK_UP){move_rotate = 1;}
                 if (event.key.keysym.sym==SDLK_DOWN){move_y = 1;}
-                if (event.key.keysym.sym==SDLK_SPACE){fall_mode = 1;}
+                if (event.key.keysym.sym==SDLK_SPACE){down_fast_mode = true;}
             if (event.type==SDL_KEYUP){
                 if ((move_x == -1)&&(event.key.keysym.sym==SDLK_LEFT)){move_x = 0;}
                 if ((move_x == 1)&&(event.key.keysym.sym==SDLK_RIGHT)){move_x = 0;}
+                if ((move_rotate == 1)&&(event.key.keysym.sym==SDLK_UP)){move_rotate = 0;}
                 if ((move_y == 1)&&(event.key.keysym.sym==SDLK_DOWN)){move_y = 0;}
             }
         }
         }
-        current_game.grid.affiche();
+        //current_game.grid.affiche();
         tick +=1;
-        std::cout << tick;
+       // std::cout << tick;
         if (tick%50==0){
             if (move_x==-1){
                 current_game.moveLeft();
             }
-            std::cout << "a";
+           // std::cout << "a";
             if (move_x==1){
                 current_game.moveRight();
             }
-            std::cout << "b";
+         //   std::cout << "b";
             if (move_y==1){
                 current_game.moveDown();
-            std::cout << "c";
+         //   std::cout << "c";
             }
         }
         if (tick%10==0){
             if(move_rotate==1){
                 current_game.rotate();
             }
-            std::cout << "d";
+          //  std::cout << "d";
         }
-        if ((tick+25)%50==0){
+        if ((tick+25)%500==0){
             current_game.moveDown();
         }
-        std::cout << "e";
+        //std::cout << "e";
+        if (down_fast_mode){
+            current_game.moveDown();
+        }
 
         
 
         interface.inter_update(current_game, blocktextures);
         
-        std::cout << "f" << std::endl;
+        //std::cout << "f" << std::endl;
     }
 };
 

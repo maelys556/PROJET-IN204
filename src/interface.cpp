@@ -5,6 +5,7 @@
 #include "../include/game.hpp"
 #include "../include/constants.hpp"
 #include "../include/tetromino.hpp"
+#include "../include/position.hpp"
 
 
 Interface::Interface(){
@@ -29,7 +30,7 @@ bool Interface::inter_init(){
         printf( "Renderer could not be created! SDL_Error: %s\n", SDL_GetError() );
         return false;
     }
-    SDL_SetRenderDrawColor(i_renderer, 125, 0, 0, 255);
+    SDL_SetRenderDrawColor(i_renderer, 0, 0, 0, 255);
     return true;
 };
 
@@ -70,6 +71,12 @@ void Interface::texture_load_blocks(SDL_Texture* blocktextures[]){
         }
     }
 
+    blockrect = (SDL_Rect){0, 8*NUM_LEVELS*NUM_BLOCK_SPRITES, 8, 8};
+    SDL_Surface* spriteSurface = SDL_CreateRGBSurface(0, blockrect.w, blockrect.h, 32, 0xFF000000, 0x00FF0000, 0x0000FF00, 0x000000FF);
+    SDL_BlitSurface(sheet, &blockrect, spriteSurface, NULL);
+    blocktextures[NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS] = SDL_CreateTextureFromSurface(i_renderer, spriteSurface);
+    SDL_FreeSurface(spriteSurface);
+
     // cleaning
     SDL_FreeSurface(sheet);
 }
@@ -85,14 +92,26 @@ void Interface::render_blocks(Game& current_game, SDL_Texture* blocktextures[]){
 
 
 
-    for (int i=0; i<GRID_SIZE_X, i++;){
-        for (int j=4; j<GRID_SIZE_Y, j++;){
+    for (int i=0; i<GRID_SIZE_X; i++){
+        for (int j=4; j<GRID_SIZE_Y; j++){
+            
+            SDL_Rect tile_rect = (SDL_Rect){x_border + i*x_size, y_border + j*y_size, x_size, y_size };
+
             int val = current_game.grid.get(i,j);
-            //if(val!=0){
-                //k + j*NUM_POWERS + i*NUM_BLOCK_SPRITES*NUM_POWERS
-                SDL_Rect tile_rect = (SDL_Rect){x_border + i*x_size, y_border + j*y_size, x_size, y_size };            
-                SDL_RenderCopyEx(i_renderer, blocktextures[i], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);
-            //}
+            if(val==0){
+                val = NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS;
+            }
+
+            SDL_RenderCopyEx(i_renderer, blocktextures[val], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);
         }
+    }
+
+    std::vector<Position> cells = current_game.currentBlock.getCells();
+    //std::cout << cells.size() << "|||";
+    for (int i=0; i<cells.size(); i++){
+        int x = cells[i].x;
+        int y = cells[i].y;
+        SDL_Rect tile_rect = (SDL_Rect){x_border + x*x_size, y_border + y*y_size, x_size, y_size };            
+        SDL_RenderCopyEx(i_renderer, blocktextures[i], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);
     }
 }

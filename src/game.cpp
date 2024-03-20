@@ -11,34 +11,34 @@ Game::Game(int size_X, int size_Y) :grid(size_X, size_Y)
     currentBlock = Tetromino(0, 0); 
 }
 
-Tetromino Game::getNewBlock() {
+void Game::getNewBlock() {
 
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dist(0,6);
-    next_id = dist(gen);         // apparemment pas besoin de time() ou truc du genre
+    int next_id = dist(gen);         // apparemment pas besoin de time() ou truc du genre
 
     if (next_id == 0) {
-        return IBlock(0, 0);
+        currentBlock = IBlock(0, 0);
     }
-        else if (next_id == 1) {
-            return LBlock(1, 0);
-        }
-        else if (next_id == 2) {
-            return JBlock(2, 0);
-        }
-        else if (next_id == 3) {
-            return OBlock(3, 0);
-        }
-        else if (next_id == 4) {
-            return SBlock(4, 0);
-        }
-        else if (next_id == 5) {
-            return TBlock(5, 0);
-        }
-        else {
-            return ZBlock(6, 0);
-        }
+    else if (next_id == 1) {
+        currentBlock = LBlock(1, 0);
+    }
+    else if (next_id == 2) {
+        currentBlock = JBlock(2, 0);
+    }
+    else if (next_id == 3) {
+        currentBlock = OBlock(3, 0);
+    }
+    else if (next_id == 4) {
+        currentBlock = SBlock(4, 0);
+    }
+    else if (next_id == 5) {
+        currentBlock = TBlock(5, 0);
+    }
+    else {
+        currentBlock = ZBlock(6, 0);
+    }
 }
 
 bool Game::IsBlockOutside() {
@@ -67,10 +67,9 @@ void Game::rotate() {
 }
 
 void Game::move(int nb_rows, int nb_columns) {
-    """
-    Cette fonction ne gère pas correctement les collisions et bloquage de tetrominos, il vaut mieux utiliser moveLeft,
-    moveDown et moveRight.
-    """
+    
+    //Cette fonction ne gère pas correctement les collisions et bloquage de tetrominos, il vaut mieux utiliser moveLeft,
+    //moveDown et moveRight.
     currentBlock.RowOffset += nb_rows;
     currentBlock.ColumnOffset += nb_columns;
     if (IsBlockOutside() == true) {
@@ -84,7 +83,7 @@ void Game::move(int nb_rows, int nb_columns) {
     }
 }
 
-void Game::moveRight() {
+void Game::moveRight() {/*
     currentBlock.ColumnOffset += 1;
     if (IsBlockOutside() == true) {
         currentBlock.ColumnOffset -= 1;
@@ -92,21 +91,36 @@ void Game::moveRight() {
     if (isCollision() == true) {
         currentBlock.ColumnOffset -= 1;
         //lockBlock(); // si le tetromino touche un tetromino bloqué à sa droite il peut tjrs move down
+    }*/
+    currentBlock.RowOffset += 1;  
+    if (IsBlockOutside() == true) {
+        currentBlock.RowOffset -= 1;
+    }
+    if (isCollision() == true) {
+        currentBlock.RowOffset -= 1;
     }
 }
 
 void Game::moveLeft() {
-    currentBlock.ColumnOffset -= 1;
+    /*currentBlock.ColumnOffset -= 1;
     if (IsBlockOutside() == true) {
         currentBlock.ColumnOffset += 1;
     }
     if (isCollision() == true) {
         currentBlock.ColumnOffset += 1;
         //lockBlock(); // si le tetromino touche un tetromino bloqué à sa gauche il peut tjrs move down
+    }*/
+    currentBlock.RowOffset += -1;  
+    if (IsBlockOutside() == true) {
+        currentBlock.RowOffset -= +1;
+    }
+    if (isCollision() == true) {
+        currentBlock.RowOffset -= +1;
     }
 }
 
 void Game::moveDown() {
+    /*
     currentBlock.RowOffset += 1;  
     if (IsBlockOutside() == true) {
         currentBlock.RowOffset -= 1;
@@ -116,6 +130,17 @@ void Game::moveDown() {
         currentBlock.RowOffset -= 1;
         lockBlock(); // si le tetromino touche un tetromino bloqué en-dessous de lui alors il se bloque
     }
+    */
+    currentBlock.ColumnOffset += 1;
+    if (IsBlockOutside() == true) {
+        currentBlock.ColumnOffset -= 1;
+        lockBlock();
+    }
+    if (isCollision() == true) {
+        currentBlock.ColumnOffset -= 1;
+        lockBlock();
+    }
+
 } 
 
 void Game::lockBlock() {
@@ -123,13 +148,6 @@ void Game::lockBlock() {
     for (int i=0; i<cells.size(); i++) {
         grid.setCellTo(cells[i].x,cells[i].y,currentBlock.id);
     }
-}
-
-void Game::moveDownFast() {
-    while (IsBlockOutside() == false && isCollision() == false) {
-        moveDown();
-    }
-    lockBlock();
 }
 
 bool Game::isCollision() { // Ajouter la gestion des collisions dans les méthodes rotate et move !!!!!

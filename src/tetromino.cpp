@@ -2,11 +2,12 @@
 #include <vector>
 #include "../include/position.hpp"
 #include "../include/tetromino.hpp"
+#include "../include/constants.hpp"
 
 
 
 Tetromino::Tetromino(int anId, int anOrientation) :
-id(anId), orientation(anOrientation), RowOffset(0), ColumnOffset(0) {
+id(anId), orientation(anOrientation), RowOffset(0), ColumnOffset((NUM_TILES_X-1)/2) {
     for (int i = 0 ; i < 4 ; i++) {
         cells[i].resize(4, Position(0,0));
     }
