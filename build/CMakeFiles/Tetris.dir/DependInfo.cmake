@@ -13,8 +13,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/guiscalbish/in204/src/grid.cpp" "CMakeFiles/Tetris.dir/src/grid.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/grid.cpp.o.d"
   "/home/guiscalbish/in204/src/interface.cpp" "CMakeFiles/Tetris.dir/src/interface.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/interface.cpp.o.d"
   "/home/guiscalbish/in204/src/position.cpp" "CMakeFiles/Tetris.dir/src/position.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/position.cpp.o.d"
+  "/home/guiscalbish/in204/src/score.cpp" "CMakeFiles/Tetris.dir/src/score.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/score.cpp.o.d"
   "/home/guiscalbish/in204/src/tetromino.cpp" "CMakeFiles/Tetris.dir/src/tetromino.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/tetromino.cpp.o.d"
-  "/home/guiscalbish/in204/src/textures.cpp" "CMakeFiles/Tetris.dir/src/textures.cpp.o" "gcc" "CMakeFiles/Tetris.dir/src/textures.cpp.o.d"
   )
 
 # Targets to which this target links.

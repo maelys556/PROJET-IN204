@@ -250,6 +250,30 @@ src/position.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/position.cpp.s
 .PHONY : src/position.cpp.s
 
+src/score.o: src/score.cpp.o
+.PHONY : src/score.o
+
+# target to build an object file
+src/score.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/score.cpp.o
+.PHONY : src/score.cpp.o
+
+src/score.i: src/score.cpp.i
+.PHONY : src/score.i
+
+# target to preprocess a source file
+src/score.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/score.cpp.i
+.PHONY : src/score.cpp.i
+
+src/score.s: src/score.cpp.s
+.PHONY : src/score.s
+
+# target to generate assembly for a file
+src/score.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/score.cpp.s
+.PHONY : src/score.cpp.s
+
 src/tetromino.o: src/tetromino.cpp.o
 .PHONY : src/tetromino.o
 
@@ -273,30 +297,6 @@ src/tetromino.s: src/tetromino.cpp.s
 src/tetromino.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/tetromino.cpp.s
 .PHONY : src/tetromino.cpp.s
-
-src/textures.o: src/textures.cpp.o
-.PHONY : src/textures.o
-
-# target to build an object file
-src/textures.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/textures.cpp.o
-.PHONY : src/textures.cpp.o
-
-src/textures.i: src/textures.cpp.i
-.PHONY : src/textures.i
-
-# target to preprocess a source file
-src/textures.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/textures.cpp.i
-.PHONY : src/textures.cpp.i
-
-src/textures.s: src/textures.cpp.s
-.PHONY : src/textures.s
-
-# target to generate assembly for a file
-src/textures.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/textures.cpp.s
-.PHONY : src/textures.cpp.s
 
 # Help Target
 help:
@@ -322,12 +322,12 @@ help:
 	@echo "... src/position.o"
 	@echo "... src/position.i"
 	@echo "... src/position.s"
+	@echo "... src/score.o"
+	@echo "... src/score.i"
+	@echo "... src/score.s"
 	@echo "... src/tetromino.o"
 	@echo "... src/tetromino.i"
 	@echo "... src/tetromino.s"
-	@echo "... src/textures.o"
-	@echo "... src/textures.i"
-	@echo "... src/textures.s"
 .PHONY : help
 
 
