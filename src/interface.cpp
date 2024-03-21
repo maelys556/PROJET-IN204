@@ -40,18 +40,20 @@ void Interface::inter_update(Game& current_game, SDL_Texture* blocktextures[]){
     // Here we will had anything we have to render, the background, grid shape, score and most importantly the blocks
     render_blocks(current_game, blocktextures);
 
-    TTF_Font* Font = TTF_OpenFont("../font/Roboto-Regular.ttf", 15);
+    TTF_Font* Font = TTF_OpenFont("../font/Roboto-Regular.ttf", 25);
     SDL_Color White = {255, 255, 255};
     std::string score_text = "Score: " + std::to_string(current_game.grid.get_score());
     SDL_Surface* surfaceMessage =
         TTF_RenderText_Solid(Font, score_text.c_str(), White); 
     SDL_Texture* Message = SDL_CreateTextureFromSurface(i_renderer, surfaceMessage);
 
+    int textWidth, textHeight;
+    TTF_SizeText(Font, score_text.c_str(), &textWidth, &textHeight);
     SDL_Rect Message_rect; 
     Message_rect.x = 0; 
     Message_rect.y = 0; 
-    Message_rect.w = 200; 
-    Message_rect.h = 50;
+    Message_rect.w = textWidth;
+    Message_rect.h = textHeight;
     SDL_RenderCopy(i_renderer, Message, NULL, &Message_rect);
 
     SDL_FreeSurface(surfaceMessage);
