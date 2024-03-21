@@ -31,12 +31,37 @@ bool Interface::inter_init(){
         printf( "Renderer could not be created! SDL_Error: %s\n", SDL_GetError() );
         return false;
     }
-    SDL_SetRenderDrawColor(i_renderer, 0, 0, 0, 255);
+    // Charger l'image du fond d'écran
+    SDL_Surface* backgroundImage = IMG_Load("../images/title_screen.bmp");
+    if (backgroundImage == NULL) {
+        printf("Unable to load image! SDL_image Error: %s\n", IMG_GetError());
+        return false;
+    }
+
+    // Convertir la surface en texture
+    SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(i_renderer, backgroundImage);
+    if (backgroundTexture == NULL) {
+        printf("Unable to create texture from image! SDL Error: %s\n", SDL_GetError());
+        return false;
+    }
+
+    // Libérer la surface
+    SDL_FreeSurface(backgroundImage);
+
+    // Effacer le rendu actuel avec la couleur de fond
+    SDL_RenderClear(i_renderer);
+
+    // Copier la texture de l'image du fond sur le renderer
+    SDL_RenderCopy(i_renderer, backgroundTexture, NULL, NULL);
+
+    // Mettre à jour l'écran
+    SDL_RenderPresent(i_renderer);
     return true;
 };
+//../images/title_screen.bmp
 
 void Interface::inter_update(Game& current_game, SDL_Texture* blocktextures[]){
-    SDL_RenderClear(i_renderer);
+    //SDL_RenderClear(i_renderer);
     // Here we will had anything we have to render, the background, grid shape, score and most importantly the blocks
     render_blocks(current_game, blocktextures);
 
@@ -111,6 +136,7 @@ void Interface::render_blocks(Game& current_game, SDL_Texture* blocktextures[]){
     int y_margin = (height/5) /2;
     int box_size = (height - 2* y_margin)/(GRID_SIZE_Y-4);
     int x_margin = (width - box_size* GRID_SIZE_X) /2;
+    y_margin += height/30;
 
 
     for (int i=0; i<GRID_SIZE_X; i++){
