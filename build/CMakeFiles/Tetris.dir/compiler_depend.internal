@@ -369,6 +369,7 @@ CMakeFiles/Tetris.dir/main.cpp.o
  /usr/include/c++/11/pstl/glue_numeric_defs.h
  /usr/include/c++/11/pstl/execution_defs.h
  /home/guiscalbish/in204/include/grid.hpp
+ /home/guiscalbish/in204/include/score.hpp
  /home/guiscalbish/in204/include/tetromino.hpp
  /home/guiscalbish/in204/include/position.hpp
 
@@ -738,6 +739,7 @@ CMakeFiles/Tetris.dir/src/game.cpp.o
  /usr/include/SDL2/SDL_misc.h
  /usr/include/SDL2/SDL.h
  /home/guiscalbish/in204/include/constants.hpp
+ /home/guiscalbish/in204/include/score.hpp
  /home/guiscalbish/in204/include/tetromino.hpp
  /home/guiscalbish/in204/include/position.hpp
  /home/guiscalbish/in204/include/game.hpp
@@ -1098,6 +1100,7 @@ CMakeFiles/Tetris.dir/src/grid.cpp.o
  /usr/include/c++/11/bits/istream.tcc
  /home/guiscalbish/in204/include/grid.hpp
  /home/guiscalbish/in204/include/constants.hpp
+ /home/guiscalbish/in204/include/score.hpp
 
 CMakeFiles/Tetris.dir/src/interface.cpp.o
  /home/guiscalbish/in204/src/interface.cpp
@@ -1467,6 +1470,7 @@ CMakeFiles/Tetris.dir/src/interface.cpp.o
  /usr/include/c++/11/pstl/glue_numeric_defs.h
  /usr/include/c++/11/pstl/execution_defs.h
  /home/guiscalbish/in204/include/grid.hpp
+ /home/guiscalbish/in204/include/score.hpp
  /home/guiscalbish/in204/include/tetromino.hpp
  /home/guiscalbish/in204/include/position.hpp
 

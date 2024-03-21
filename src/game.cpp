@@ -6,7 +6,8 @@
 #include "../include/game.hpp"
 
 Game::Game(int size_X, int size_Y) :grid(size_X, size_Y){
-    currentBlock = Tetromino(0, 0, 0); 
+    currentBlock = Tetromino(0, 0, 0);
+    g_level = 0; 
 }
 
 void Game::getNewBlock() {
@@ -146,8 +147,9 @@ void Game::moveDown() {
 
 void Game::lockBlock() {
     std::vector<Position> cells = currentBlock.getCells();
+    int val = ((currentBlock.id+1)%NUM_BLOCK_SPRITES)*NUM_POWERS + currentBlock.t_power + NUM_POWERS*NUM_BLOCK_SPRITES*g_level ;
     for (int i=0; i<cells.size(); i++) {
-        grid.setCellTo(cells[i].x,cells[i].y,currentBlock.id);
+        grid.setCellTo(cells[i].x,cells[i].y, val);
     }
     this->getNewBlock();
     fast_mode = false;

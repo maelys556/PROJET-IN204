@@ -299,5 +299,6 @@ CMakeFiles/Tetris.dir/src/interface.cpp.o: \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
  /home/guiscalbish/in204/src/../include/grid.hpp \
+ /home/guiscalbish/in204/src/../include/score.hpp \
  /home/guiscalbish/in204/src/../include/tetromino.hpp \
  /home/guiscalbish/in204/src/../include/position.hpp

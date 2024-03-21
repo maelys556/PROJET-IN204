@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <vector>
 #include "constants.hpp"
+#include "score.hpp"
 
 class Grid {
     private:
@@ -19,7 +20,7 @@ class Grid {
         bool isCellEmpty(int x, int y);
         void setCellTo(int x, int y, int val);
         int get(int x, int y);
-        void updateScore();
+        void updateScore(std::vector<int> rows, Score score);
 
         //Tetromino* spawn(int color, int shape);
         //void delete_line(int line, Score score, int point_multiplier);

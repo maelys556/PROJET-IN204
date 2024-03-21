@@ -13,6 +13,10 @@ id(anId), orientation(anOrientation), RowOffset((GRID_SIZE_X-1)/2), ColumnOffset
     }
 }
 
+int Tetromino::get_sprite_nbr(int level){
+    return ((id+1)%NUM_BLOCK_SPRITES)*NUM_POWERS + t_power + NUM_POWERS*NUM_BLOCK_SPRITES*level;
+}
+
 std::vector<Position> Tetromino::getCells() {
     std::vector<Position> c = cells[orientation];
     std::vector<Position> occupied_cells;

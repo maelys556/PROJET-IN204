@@ -8,22 +8,30 @@
 #include "include/constants.hpp"
 #include "include/game.hpp"
 #include "include/tetromino.hpp"
+#include "include/score.hpp"
 
 int main(int argc, char* argv[]){
 
     // reel code
     int tick = 0;
+    //std::cout<< "X ";
     Interface interface;
+    //std::cout<< "X ";
     interface.inter_init();
 
+    //std::cout<< "X ";
     Game current_game(GRID_SIZE_X, GRID_SIZE_Y);
+    //std::cout<< "X ";
     current_game.getNewBlock();
+    //std::cout<< "X ";
 
 // loading all textures
     SDL_Texture* blocktextures[NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS + 1];
+    //std::cout<< "X ";
     interface.texture_load_blocks(blocktextures);
+    //std::cout<< "X ";
+    Score score;
     
-    Game game(GRID_SIZE_X, GRID_SIZE_Y);
 
     //ici maelouille ! -------------------------------------------------------------------------------------------------
     
@@ -76,6 +84,7 @@ int main(int argc, char* argv[]){
             }
         }
         tick += 1;
+        //std::cout<< "X ";
         if (tick % 50 == 0) {
             if (move_x == -1) {
                 current_game.moveLeft();
@@ -90,28 +99,42 @@ int main(int argc, char* argv[]){
                 move_y = 0;
             }
         }
+        //std::cout<< "X ";
         if (tick % 10 == 0) {
             if (move_rotate == 1) {
                 current_game.rotate();
                 move_rotate = false;
             }
+        //std::cout<< "X ";
         }
         if ((tick + 25) % 50 == 0) {
             current_game.moveDown();
         }
-
+        //std::cout<< "X ";
         if (current_game.fast_mode){
             current_game.moveDown();
         }
-
+        
+        //std::cout<< "X ";
+        std::vector<int> comp_rows = current_game.grid.completedRows();
+        if (comp_rows.size()!=0){
+            current_game.grid.updateScore(comp_rows, score);
+            //int offset = 0;
+            for (int i=0; i<comp_rows.size(); i++){
+                current_game.grid.deleteRow(comp_rows[i]);
+                //offset+=1;
+            }
+        }
+        //std::cout<< "X ";
         if (current_game.grid.isGameOver()){
+
             running=false;
         }
 
-        
+        //std::cout<< "X ";
 
         interface.inter_update(current_game, blocktextures);
-        
+        //std::cout<< std::endl;
         //std::cout << "f" << std::endl;
     }
 };

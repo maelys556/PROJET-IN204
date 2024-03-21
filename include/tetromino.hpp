@@ -16,6 +16,7 @@ class Tetromino {
     Tetromino(int anId, int anOrientation, int aPower);
     std::vector<Position> getCells();
     void printTetromino();
+    int get_sprite_nbr(int level);
 };
 
 

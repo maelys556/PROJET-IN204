@@ -368,6 +368,7 @@ CMakeFiles/Tetris.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/pstl/glue_numeric_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
   ../include/grid.hpp \
+  ../include/score.hpp \
   ../include/tetromino.hpp \
   ../include/position.hpp
 
@@ -736,6 +737,7 @@ CMakeFiles/Tetris.dir/src/game.cpp.o: ../src/game.cpp \
   /usr/include/SDL2/SDL_misc.h \
   /usr/include/SDL2/SDL.h \
   ../include/constants.hpp \
+  ../include/score.hpp \
   ../include/tetromino.hpp \
   ../include/position.hpp \
   ../include/game.hpp
@@ -1094,7 +1096,8 @@ CMakeFiles/Tetris.dir/src/grid.cpp.o: ../src/grid.cpp \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   ../include/grid.hpp \
-  ../include/constants.hpp
+  ../include/constants.hpp \
+  ../include/score.hpp
 
 CMakeFiles/Tetris.dir/src/interface.cpp.o: ../src/interface.cpp \
   /usr/include/stdc-predef.h \
@@ -1463,6 +1466,7 @@ CMakeFiles/Tetris.dir/src/interface.cpp.o: ../src/interface.cpp \
   /usr/include/c++/11/pstl/glue_numeric_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
   ../include/grid.hpp \
+  ../include/score.hpp \
   ../include/tetromino.hpp \
   ../include/position.hpp
 
@@ -2221,8 +2225,6 @@ CMakeFiles/Tetris.dir/src/textures.cpp.o: ../src/textures.cpp \
 
 ../src/tetromino.cpp:
 
-../include/score.hpp:
-
 /usr/include/c++/11/bits/hashtable_policy.h:
 
 /usr/include/c++/11/unordered_map:
@@ -2254,6 +2256,8 @@ CMakeFiles/Tetris.dir/src/textures.cpp.o: ../src/textures.cpp \
 ../src/position.cpp:
 
 ../src/interface.cpp:
+
+../include/score.hpp:
 
 /usr/include/c++/11/bit:
 
