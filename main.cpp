@@ -12,19 +12,15 @@
 #include "include/tetromino.hpp"
 #include "include/score.hpp"
 
+
 int main(int argc, char* argv[]){
 
-    
     TTF_Init();
-    TTF_Font* Font = TTF_OpenFont("../font/Roboto-Regular.ttf", 25);
-
+    TTF_Font* Font = TTF_OpenFont("../font/Roboto-Black.ttf", 25);
     int tick = 0;
-    
     Interface interface;
-    
     interface.inter_init();
 
-    
     Game current_game(GRID_SIZE_X, GRID_SIZE_Y);
     
     current_game.getNewBlock();
@@ -68,7 +64,6 @@ int main(int argc, char* argv[]){
     //end-------------------------------------------------------------------------------------------------------------
 
     // tests
-    bool game_ended = false;
     bool running = true;
     int move_x(0) , move_y(0) , move_rotate(0);
     
@@ -81,7 +76,7 @@ int main(int argc, char* argv[]){
             if (event.type==SDL_QUIT){
                 running=0;
             }
-            if (event.type==SDL_KEYDOWN && not game_ended){
+            if (event.type==SDL_KEYDOWN){
                 if (event.key.keysym.sym==SDLK_LEFT){move_x = -1;}
                 if (event.key.keysym.sym==SDLK_RIGHT){move_x = 1;}
                 if (event.key.keysym.sym==SDLK_UP){move_rotate = 1;}
@@ -91,7 +86,7 @@ int main(int argc, char* argv[]){
         }
         tick += 1;
         
-        if (tick % 25 == 0) {
+        if (tick % 10 == 0) {
             if (move_x == -1) {
                 current_game.moveLeft();
                 move_x = 0;
@@ -120,7 +115,7 @@ int main(int argc, char* argv[]){
         if (current_game.fast_mode){
             current_game.moveDown();
         }
-
+        current_game.grid.level_change();
         
         std::vector<int> comp_rows = current_game.grid.completedRows();
         

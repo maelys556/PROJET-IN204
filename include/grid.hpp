@@ -9,6 +9,7 @@ class Grid {
     private:
         std::vector<std::vector<int>> g_matrix;
         int g_score;
+        int g_level;
     public:
         Grid(int h, int w);
         void affiche();
@@ -21,6 +22,8 @@ class Grid {
         void setCellTo(int x, int y, int val);
         int get(int x, int y);
         int get_score();
+        int get_level();
+        void level_change();
         void updateScore(std::vector<int> rows);
 
         //Tetromino* spawn(int color, int shape);

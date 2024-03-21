@@ -60,30 +60,51 @@ bool Interface::inter_init(){
 };
 //../images/title_screen.bmp
 
-void Interface::inter_update(Game& current_game, SDL_Texture* blocktextures[], TTF_Font* Font){
-    //SDL_RenderClear(i_renderer);
-    // Here we will had anything we have to render, the background, grid shape, score and most importantly the blocks
+void Interface::inter_update(Game& current_game, SDL_Texture* blocktextures[], TTF_Font* Font) {
+    SDL_RenderClear(i_renderer);
+    
+    // Load the background image
+    SDL_Surface* backgroundImage = IMG_Load("../images/title_screen.bmp");
+    if (backgroundImage == nullptr) {
+        // Handle error
+        std::cerr << "Failed to load background image: " << IMG_GetError() << std::endl;
+        return;
+    }
+
+    // Create texture from the background image
+    SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(i_renderer, backgroundImage);
+    SDL_FreeSurface(backgroundImage); // Free the surface now that we have the texture
+    
+    // Render the background texture
+    SDL_RenderCopy(i_renderer, backgroundTexture, nullptr, nullptr);
+    
+    // Render other elements (blocks, score, etc.)
     render_blocks(current_game, blocktextures);
 
-    
-    SDL_Color White = {255, 255, 255};
+    // Render the score
+    SDL_Color White = {63, 191, 255};
     std::string score_text = "Score: " + std::to_string(current_game.grid.get_score());
-    SDL_Surface* surfaceMessage =
-        TTF_RenderText_Solid(Font, score_text.c_str(), White); 
+    SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Font, score_text.c_str(), White);
     SDL_Texture* Message = SDL_CreateTextureFromSurface(i_renderer, surfaceMessage);
-
     int textWidth, textHeight;
     TTF_SizeText(Font, score_text.c_str(), &textWidth, &textHeight);
     SDL_Rect Message_rect; 
-    Message_rect.x = 0; 
-    Message_rect.y = 0; 
+    int w_width, w_height;
+    SDL_GetWindowSize(i_window, &w_width, &w_height);
+    Message_rect.x = w_width / 6; 
+    Message_rect.y = w_height / 2; 
     Message_rect.w = textWidth;
     Message_rect.h = textHeight;
-    SDL_RenderCopy(i_renderer, Message, NULL, &Message_rect);
+    SDL_RenderCopy(i_renderer, Message, nullptr, &Message_rect);
 
+    // Clean up resources
     SDL_FreeSurface(surfaceMessage);
     SDL_DestroyTexture(Message);
 
+    // Explicitly destroy the background texture
+    SDL_DestroyTexture(backgroundTexture);
+
+    // Present the renderer
     SDL_RenderPresent(i_renderer);
 }
 
@@ -157,7 +178,7 @@ void Interface::render_blocks(Game& current_game, SDL_Texture* blocktextures[]){
         int y = cells[i].y;
         if (y>=4){
             SDL_Rect tile_rect = (SDL_Rect){x_margin + x*box_size, y_margin + (y-4)*box_size, box_size, box_size };            
-            SDL_RenderCopyEx(i_renderer, blocktextures[current_game.currentBlock.get_sprite_nbr(current_game.g_level)], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);
+            SDL_RenderCopyEx(i_renderer, blocktextures[current_game.currentBlock.get_sprite_nbr(current_game.grid.get_level())], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);
         }
     }
 }

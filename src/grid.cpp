@@ -14,6 +14,7 @@ Grid::Grid(int h, int w) {
         g_matrix[i].resize(w, -1);
     }
     g_score = 0;
+    g_level = 0;
 }
 
 
@@ -99,6 +100,13 @@ void Grid::updateScore(std::vector<int> rows) {
 int Grid::get_score(){
     return g_score;
 }
+int Grid::get_level(){
+    return g_level;
+}
+void Grid::level_change(){
+    g_level = (g_score/1000) % NUM_LEVELS;
+}
+
 
 void Grid::deleteRow(int row) {
     
