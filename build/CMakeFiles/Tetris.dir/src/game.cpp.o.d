@@ -298,7 +298,6 @@ CMakeFiles/Tetris.dir/src/game.cpp.o: \
  /usr/include/SDL2/SDL_locale.h /usr/include/SDL2/SDL_misc.h \
  /usr/include/SDL2/SDL.h \
  /home/guiscalbish/in204/src/../include/constants.hpp \
- /home/guiscalbish/in204/src/../include/score.hpp \
  /home/guiscalbish/in204/src/../include/tetromino.hpp \
  /home/guiscalbish/in204/src/../include/position.hpp \
  /home/guiscalbish/in204/src/../include/game.hpp

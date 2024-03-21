@@ -85,20 +85,18 @@ void Interface::render_blocks(Game& current_game, SDL_Texture* blocktextures[]){
     int width, height;
     SDL_GetWindowSize(i_window, &width, &height);
 
-    int x_border = (width /2) /2;
-    int y_border = (height /2) /5;
-    int x_size = (width - 2*x_border)/GRID_SIZE_X;
-    int y_size = (height - 2*y_border)/GRID_SIZE_Y;
-
+    int y_margin = (height/5) /2;
+    int box_size = (height - 2* y_margin)/(GRID_SIZE_Y-4);
+    int x_margin = (width - box_size* GRID_SIZE_X) /2;
 
 
     for (int i=0; i<GRID_SIZE_X; i++){
         for (int j=4; j<GRID_SIZE_Y; j++){
             
-            SDL_Rect tile_rect = (SDL_Rect){x_border + i*x_size, y_border + j*y_size, x_size, y_size };
+            SDL_Rect tile_rect = (SDL_Rect){x_margin + i*box_size, y_margin + (j-4)*box_size, box_size, box_size };
 
             int val = current_game.grid.get(i,j);
-            if(val==0){
+            if(val==-1){
                 val = NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS;
             }
 
@@ -112,7 +110,7 @@ void Interface::render_blocks(Game& current_game, SDL_Texture* blocktextures[]){
         int x = cells[i].x;
         int y = cells[i].y;
         if (y>=4){
-        SDL_Rect tile_rect = (SDL_Rect){x_border + x*x_size, y_border + y*y_size, x_size, y_size };            
+        SDL_Rect tile_rect = (SDL_Rect){x_margin + x*box_size, y_margin + (y-4)*box_size, box_size, box_size };            
         SDL_RenderCopyEx(i_renderer, blocktextures[i], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);
         }
     }

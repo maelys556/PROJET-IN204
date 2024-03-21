@@ -13,7 +13,7 @@ void Game::getNewBlock() {
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dist(0,6);
+    std::uniform_int_distribution<> dist(1,7);
     int next_id = dist(gen);         // apparemment pas besoin de time() ou truc du genre
     std::uniform_int_distribution<> dist2(1,100);
     int tirage = dist2(gen);
@@ -27,8 +27,8 @@ void Game::getNewBlock() {
 
 
 
-    if (next_id == 0) {
-        currentBlock = IBlock(0, 0, power);
+    if (next_id == 7) {
+        currentBlock = IBlock(7, 0, power);
     } else if (next_id == 1) {
         currentBlock = LBlock(1, 0, power);
     } else if (next_id == 2) {

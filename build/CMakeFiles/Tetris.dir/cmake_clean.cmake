@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Tetris.dir/src/score.cpp.o.d"
   "CMakeFiles/Tetris.dir/src/tetromino.cpp.o"
   "CMakeFiles/Tetris.dir/src/tetromino.cpp.o.d"
+  "CMakeFiles/Tetris.dir/src/textures.cpp.o"
+  "CMakeFiles/Tetris.dir/src/textures.cpp.o.d"
   "Tetris"
   "Tetris.pdb"
 )

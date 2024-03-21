@@ -11,6 +11,7 @@ set(OLD_GLOB
   "/home/guiscalbish/in204/src/position.cpp"
   "/home/guiscalbish/in204/src/score.cpp"
   "/home/guiscalbish/in204/src/tetromino.cpp"
+  "/home/guiscalbish/in204/src/textures.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

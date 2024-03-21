@@ -298,6 +298,30 @@ src/tetromino.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/tetromino.cpp.s
 .PHONY : src/tetromino.cpp.s
 
+src/textures.o: src/textures.cpp.o
+.PHONY : src/textures.o
+
+# target to build an object file
+src/textures.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/textures.cpp.o
+.PHONY : src/textures.cpp.o
+
+src/textures.i: src/textures.cpp.i
+.PHONY : src/textures.i
+
+# target to preprocess a source file
+src/textures.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/textures.cpp.i
+.PHONY : src/textures.cpp.i
+
+src/textures.s: src/textures.cpp.s
+.PHONY : src/textures.s
+
+# target to generate assembly for a file
+src/textures.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/textures.cpp.s
+.PHONY : src/textures.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -328,6 +352,9 @@ help:
 	@echo "... src/tetromino.o"
 	@echo "... src/tetromino.i"
 	@echo "... src/tetromino.s"
+	@echo "... src/textures.o"
+	@echo "... src/textures.i"
+	@echo "... src/textures.s"
 .PHONY : help
 
 

@@ -349,11 +349,6 @@ CMakeFiles/Tetris.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
-  /usr/include/c++/11/fstream \
-  /usr/include/c++/11/bits/codecvt.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc \
   ../include/interface.hpp \
   ../include/constants.hpp \
   ../include/game.hpp \
@@ -373,7 +368,6 @@ CMakeFiles/Tetris.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/pstl/glue_numeric_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
   ../include/grid.hpp \
-  ../include/score.hpp \
   ../include/tetromino.hpp \
   ../include/position.hpp
 
@@ -742,7 +736,6 @@ CMakeFiles/Tetris.dir/src/game.cpp.o: ../src/game.cpp \
   /usr/include/SDL2/SDL_misc.h \
   /usr/include/SDL2/SDL.h \
   ../include/constants.hpp \
-  ../include/score.hpp \
   ../include/tetromino.hpp \
   ../include/position.hpp \
   ../include/game.hpp
@@ -1101,8 +1094,7 @@ CMakeFiles/Tetris.dir/src/grid.cpp.o: ../src/grid.cpp \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   ../include/grid.hpp \
-  ../include/constants.hpp \
-  ../include/score.hpp
+  ../include/constants.hpp
 
 CMakeFiles/Tetris.dir/src/interface.cpp.o: ../src/interface.cpp \
   /usr/include/stdc-predef.h \
@@ -1362,32 +1354,32 @@ CMakeFiles/Tetris.dir/src/interface.cpp.o: ../src/interface.cpp \
   /usr/include/SDL2/SDL.h \
   ../include/interface.hpp \
   ../include/constants.hpp \
-  /usr/include/c++/11/string \
+  ../include/game.hpp \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/ostream \
+  /usr/include/c++/11/ios \
+  /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/bits/stringfwd.h \
   /usr/include/c++/11/bits/memoryfwd.h \
-  /usr/include/c++/11/bits/char_traits.h \
   /usr/include/c++/11/bits/postypes.h \
   /usr/include/c++/11/cwchar \
-  /usr/include/c++/11/cstdint \
-  /usr/include/c++/11/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
-  /usr/include/c++/11/ext/new_allocator.h \
-  /usr/include/c++/11/new \
+  /usr/include/c++/11/exception \
   /usr/include/c++/11/bits/exception.h \
+  /usr/include/c++/11/bits/exception_ptr.h \
+  /usr/include/c++/11/bits/cxxabi_init_exception.h \
+  /usr/include/c++/11/typeinfo \
+  /usr/include/c++/11/bits/hash_bytes.h \
+  /usr/include/c++/11/new \
+  /usr/include/c++/11/bits/nested_exception.h \
+  /usr/include/c++/11/bits/char_traits.h \
+  /usr/include/c++/11/cstdint \
   /usr/include/c++/11/bits/localefwd.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
   /usr/include/c++/11/clocale \
   /usr/include/locale.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
-  /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/cctype \
-  /usr/include/c++/11/bits/ostream_insert.h \
-  /usr/include/c++/11/bits/cxxabi_forced.h \
-  /usr/include/c++/11/bits/stl_function.h \
-  /usr/include/c++/11/backward/binders.h \
-  /usr/include/c++/11/bits/range_access.h \
-  /usr/include/c++/11/initializer_list \
-  /usr/include/c++/11/bits/basic_string.h \
+  /usr/include/c++/11/bits/ios_base.h \
   /usr/include/c++/11/ext/atomicity.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
@@ -1406,12 +1398,23 @@ CMakeFiles/Tetris.dir/src/interface.cpp.o: ../src/interface.cpp \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
+  /usr/include/c++/11/bits/locale_classes.h \
+  /usr/include/c++/11/string \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/bits/ostream_insert.h \
+  /usr/include/c++/11/bits/cxxabi_forced.h \
+  /usr/include/c++/11/bits/stl_function.h \
+  /usr/include/c++/11/backward/binders.h \
+  /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/bits/basic_string.h \
   /usr/include/c++/11/ext/alloc_traits.h \
   /usr/include/c++/11/bits/alloc_traits.h \
   /usr/include/c++/11/bits/stl_construct.h \
   /usr/include/c++/11/string_view \
   /usr/include/c++/11/bits/functional_hash.h \
-  /usr/include/c++/11/bits/hash_bytes.h \
   /usr/include/c++/11/bits/string_view.tcc \
   /usr/include/c++/11/ext/string_conversions.h \
   /usr/include/c++/11/cstdio \
@@ -1425,17 +1428,6 @@ CMakeFiles/Tetris.dir/src/interface.cpp.o: ../src/interface.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/bits/charconv.h \
   /usr/include/c++/11/bits/basic_string.tcc \
-  ../include/game.hpp \
-  /usr/include/c++/11/iostream \
-  /usr/include/c++/11/ostream \
-  /usr/include/c++/11/ios \
-  /usr/include/c++/11/exception \
-  /usr/include/c++/11/bits/exception_ptr.h \
-  /usr/include/c++/11/bits/cxxabi_init_exception.h \
-  /usr/include/c++/11/typeinfo \
-  /usr/include/c++/11/bits/nested_exception.h \
-  /usr/include/c++/11/bits/ios_base.h \
-  /usr/include/c++/11/bits/locale_classes.h \
   /usr/include/c++/11/bits/locale_classes.tcc \
   /usr/include/c++/11/system_error \
   /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
@@ -1471,7 +1463,6 @@ CMakeFiles/Tetris.dir/src/interface.cpp.o: ../src/interface.cpp \
   /usr/include/c++/11/pstl/glue_numeric_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
   ../include/grid.hpp \
-  ../include/score.hpp \
   ../include/tetromino.hpp \
   ../include/position.hpp
 
@@ -2222,8 +2213,15 @@ CMakeFiles/Tetris.dir/src/tetromino.cpp.o: ../src/tetromino.cpp \
   /usr/include/SDL2/SDL_misc.h \
   /usr/include/SDL2/SDL.h
 
+CMakeFiles/Tetris.dir/src/textures.cpp.o: ../src/textures.cpp \
+  /usr/include/stdc-predef.h
+
+
+../src/textures.cpp:
 
 ../src/tetromino.cpp:
+
+../include/score.hpp:
 
 /usr/include/c++/11/bits/hashtable_policy.h:
 
@@ -2245,11 +2243,17 @@ CMakeFiles/Tetris.dir/src/tetromino.cpp.o: ../src/tetromino.cpp \
 
 /usr/include/c++/11/algorithm:
 
+/usr/include/c++/11/bits/fstream.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+/usr/include/c++/11/fstream:
+
 ../src/position.cpp:
 
 ../src/interface.cpp:
-
-../include/score.hpp:
 
 /usr/include/c++/11/bit:
 
@@ -2262,14 +2266,6 @@ CMakeFiles/Tetris.dir/src/tetromino.cpp.o: ../src/tetromino.cpp \
 /usr/include/c++/11/vector:
 
 ../include/game.hpp:
-
-/usr/include/c++/11/bits/fstream.tcc:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
-
-/usr/include/c++/11/fstream:
 
 /usr/include/c++/11/bits/istream.tcc:
 
@@ -2641,9 +2637,9 @@ CMakeFiles/Tetris.dir/src/tetromino.cpp.o: ../src/tetromino.cpp \
 
 /usr/include/c++/11/bits/enable_special_members.h:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h:
-
 /usr/include/c++/11/bits/codecvt.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h:
 
 /usr/include/c++/11/bits/basic_ios.tcc:
 

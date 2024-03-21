@@ -11,6 +11,9 @@
 #define NUM_TILES_X (SCREEN_WIDTH / TILE_SIZE)
 #define NUM_TILES_Y (SCREEN_HEIGHT / TILE_SIZE)
 
+#define MAX_NUMBER_SCORE 10
+#define SCORE_FILE_PATH "../score/score.txt"
+
 
 // SPITES constants
 #define NUM_BLOCK_SPRITES 3

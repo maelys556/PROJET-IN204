@@ -73,44 +73,39 @@ int main(int argc, char* argv[]){
                 if (event.key.keysym.sym==SDLK_UP){move_rotate = 1;}
                 if (event.key.keysym.sym==SDLK_DOWN){move_y = 1;}
                 if (event.key.keysym.sym==SDLK_SPACE){current_game.fast_mode = true;}
-            if (event.type==SDL_KEYUP){
-                if ((move_x == -1)&&(event.key.keysym.sym==SDLK_LEFT)){move_x = 0;}
-                if ((move_x == 1)&&(event.key.keysym.sym==SDLK_RIGHT)){move_x = 0;}
-                if ((move_rotate == 1)&&(event.key.keysym.sym==SDLK_UP)){move_rotate = 0;}
-                if ((move_y == 1)&&(event.key.keysym.sym==SDLK_DOWN)){move_y = 0;}
             }
         }
-        }
-        //current_game.grid.affiche();
-        tick +=1;
-       // std::cout << tick;
-        if (tick%50==0){
-            if (move_x==-1){
+        tick += 1;
+        if (tick % 50 == 0) {
+            if (move_x == -1) {
                 current_game.moveLeft();
+                move_x = 0;
             }
-           // std::cout << "a";
-            if (move_x==1){
+            if (move_x == 1) {
                 current_game.moveRight();
+                move_x = 0;
             }
-         //   std::cout << "b";
-            if (move_y==1){
+            if (move_y == 1) {
                 current_game.moveDown();
-         //   std::cout << "c";
+                move_y = 0;
             }
         }
-        if (tick%10==0){
-            if(move_rotate==1){
+        if (tick % 10 == 0) {
+            if (move_rotate == 1) {
                 current_game.rotate();
                 move_rotate = false;
             }
-          //  std::cout << "d";
         }
-        if ((tick+25)%500==0){
+        if ((tick + 25) % 50 == 0) {
             current_game.moveDown();
         }
-        //std::cout << "e";
+
         if (current_game.fast_mode){
             current_game.moveDown();
+        }
+
+        if (current_game.grid.isGameOver()){
+            running=false;
         }
 
         
