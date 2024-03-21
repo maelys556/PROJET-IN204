@@ -14,7 +14,7 @@ class Interface {
     public:
         Interface();
         bool inter_init();
-        void inter_update(Game& current_game, SDL_Texture* blocktextures[]);
+        void inter_update(Game& current_game, SDL_Texture* blocktextures[], TTF_Font* Font);
         void texture_load_blocks(SDL_Texture* blocktextures[]);
         void render_blocks(Game& current_game, SDL_Texture* blocktextures[]);
         ~Interface();

@@ -60,12 +60,12 @@ bool Interface::inter_init(){
 };
 //../images/title_screen.bmp
 
-void Interface::inter_update(Game& current_game, SDL_Texture* blocktextures[]){
+void Interface::inter_update(Game& current_game, SDL_Texture* blocktextures[], TTF_Font* Font){
     //SDL_RenderClear(i_renderer);
     // Here we will had anything we have to render, the background, grid shape, score and most importantly the blocks
     render_blocks(current_game, blocktextures);
 
-    TTF_Font* Font = TTF_OpenFont("../font/Roboto-Regular.ttf", 25);
+    
     SDL_Color White = {255, 255, 255};
     std::string score_text = "Score: " + std::to_string(current_game.grid.get_score());
     SDL_Surface* surfaceMessage =
@@ -83,9 +83,6 @@ void Interface::inter_update(Game& current_game, SDL_Texture* blocktextures[]){
 
     SDL_FreeSurface(surfaceMessage);
     SDL_DestroyTexture(Message);
-
-    
-    //SDL_RenderCopy(i_renderer, scoretextures, NULL, &scoreRenderRect);
 
     SDL_RenderPresent(i_renderer);
 }
