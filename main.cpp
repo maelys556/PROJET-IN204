@@ -85,8 +85,11 @@ int main(int argc, char* argv[]){
             }
         }
         tick += 1;
+
+        int tick10 = 1 + 10 - (current_game.grid.get_level()*10)/NUM_LEVELS;
+        int tick50 = 1 + 50 - (current_game.grid.get_level()*50)/NUM_LEVELS;
         
-        if (tick % 10 == 0) {
+        if (tick % tick10 == 0) {
             if (move_x == -1) {
                 current_game.moveLeft();
                 move_x = 0;
@@ -99,16 +102,13 @@ int main(int argc, char* argv[]){
                 current_game.moveDown();
                 move_y = 0;
             }
-        }
-        
-        if (tick % 10 == 0) {
             if (move_rotate == 1) {
                 current_game.rotate();
                 move_rotate = false;
             }
         
         }
-        if ((tick + 25) % 50 == 0) {
+        if ((tick + 25) % tick50 == 0) {
             current_game.moveDown();
         }
         

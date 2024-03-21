@@ -13,7 +13,6 @@
 
 #define MAX_NUMBER_SCORE 10
 #define SCORE_FILE_PATH "../score/score.txt"
-#define GAME_SPEEDUP
 
 // SPITES constants
 #define NUM_BLOCK_SPRITES 3
