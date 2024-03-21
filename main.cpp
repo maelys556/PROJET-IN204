@@ -1,5 +1,7 @@
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <SDL.h>
+//sudo apt-get install libsdl2-ttf-dev
 
 #include <iostream>
 
@@ -11,6 +13,9 @@
 #include "include/score.hpp"
 
 int main(int argc, char* argv[]){
+
+    
+    TTF_Init();
 
     // reel code
     int tick = 0;
@@ -24,14 +29,18 @@ int main(int argc, char* argv[]){
     //std::cout<< "X ";
     current_game.getNewBlock();
     //std::cout<< "X ";
+    
+    Score score;
+    
 
 // loading all textures
     SDL_Texture* blocktextures[NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS + 1];
+    SDL_Texture* scoretextures;
+    SDL_Rect scoreRenderRect;
     //std::cout<< "X ";
     interface.texture_load_blocks(blocktextures);
+    //interface.load_score(scoretextures,scoreRenderRect,score);
     //std::cout<< "X ";
-    Score score;
-    
 
     //ici maelouille ! -------------------------------------------------------------------------------------------------
     
@@ -85,7 +94,7 @@ int main(int argc, char* argv[]){
         }
         tick += 1;
         //std::cout<< "X ";
-        if (tick % 50 == 0) {
+        if (tick % 25 == 0) {
             if (move_x == -1) {
                 current_game.moveLeft();
                 move_x = 0;
@@ -114,12 +123,14 @@ int main(int argc, char* argv[]){
         if (current_game.fast_mode){
             current_game.moveDown();
         }
-        
+
         //std::cout<< "X ";
         std::vector<int> comp_rows = current_game.grid.completedRows();
         if (comp_rows.size()!=0){
-            current_game.grid.updateScore(comp_rows, score);
+            
             //int offset = 0;
+            current_game.grid.updateScore(comp_rows, score);
+            //interface.load_score(scoretextures,scoreRenderRect,score);
             for (int i=0; i<comp_rows.size(); i++){
                 current_game.grid.deleteRow(comp_rows[i]);
                 //offset+=1;
@@ -133,53 +144,8 @@ int main(int argc, char* argv[]){
 
         //std::cout<< "X ";
 
-        interface.inter_update(current_game, blocktextures);
+        interface.inter_update(current_game, score, blocktextures, scoretextures, scoreRenderRect);
         //std::cout<< std::endl;
         //std::cout << "f" << std::endl;
     }
 };
-
-/*    Classe Piece :
-        Attributs :
-            Forme de la pièce
-            Couleur de la pièce
-            Position actuelle sur la grille
-        Méthodes :
-            Déplacer vers le bas
-            Déplacer à gauche
-            Déplacer à droite
-            Rotation
-
-    Classe Grille :
-        Attributs :
-            Matrice représentant les cases de la grille
-        Méthodes :
-            Ajouter une pièce à la grille
-            Supprimer une ligne complète
-            Vérifier les collisions
-
-    Classe Jeu :
-        Attributs :
-            État du jeu (en cours, en pause, terminé)
-            Score actuel
-            Niveau actuel
-        Méthodes :
-            Initialiser le jeu
-            Mettre à jour le jeu
-            Gérer les entrées utilisateur
-            Afficher le jeu
-
-    Classe InterfaceUtilisateur :
-        Attributs :
-            Fenêtre de l'interface graphique
-        Méthodes :
-            Afficher la grille et les pièces
-            Gérer les entrées utilisateur (clavier pour déplacer et faire pivoter les pièces)
-
-    Classe Score :
-        Attributs :
-            Score total du joueur
-            Meilleur score
-        Méthodes :
-            Mettre à jour le score
-            Enregistrer les meilleurs scores*/

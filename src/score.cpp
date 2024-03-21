@@ -63,7 +63,5 @@ void Score::loadBestScores() {
 }
 
 void Score::add_current(int points){
-    std::cout <<"bbb";
     sc_current_score = sc_current_score + points;
-    std::cout <<"ccc";
 }

@@ -74,7 +74,10 @@ std::vector<int> Grid::completedRows() {
 }
 
 void Grid::updateScore(std::vector<int> rows, Score score) {
+    
+    
     int points(0);
+    std::cout<<points << "  1<---";
     if (rows.size() == 1) {
         points = 100;
     } else if (rows.size() == 2) {
@@ -89,7 +92,10 @@ void Grid::updateScore(std::vector<int> rows, Score score) {
             points += 40 * (((g_matrix[j][rows[k]])%3) + 1);
         }
     }
+    std::cout<<points << "  2<---";
     score.add_current(points);
+    
+    std::cout<<points << "  3<---";
 }
 
 

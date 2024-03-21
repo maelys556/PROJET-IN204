@@ -256,6 +256,7 @@ CMakeFiles/Tetris.dir/main.cpp.o: ../main.cpp \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_locale.h \
   /usr/include/SDL2/SDL_misc.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
@@ -1354,6 +1355,7 @@ CMakeFiles/Tetris.dir/src/interface.cpp.o: ../src/interface.cpp \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_locale.h \
   /usr/include/SDL2/SDL_misc.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL.h \
   ../include/interface.hpp \
   ../include/constants.hpp \
@@ -2391,6 +2393,12 @@ CMakeFiles/Tetris.dir/src/textures.cpp.o: ../src/textures.cpp \
 
 /usr/include/c++/11/cwchar:
 
+/usr/include/c++/11/utility:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
+
+/usr/include/c++/11/ios:
+
 /usr/include/SDL2/SDL_clipboard.h:
 
 /usr/include/c++/11/tr1/hypergeometric.tcc:
@@ -2550,6 +2558,8 @@ CMakeFiles/Tetris.dir/src/textures.cpp.o: ../src/textures.cpp \
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/c++/11/tr1/modified_bessel_func.tcc:
+
+/usr/include/SDL2/SDL_ttf.h:
 
 /usr/include/inttypes.h:
 
@@ -2752,12 +2762,6 @@ CMakeFiles/Tetris.dir/src/textures.cpp.o: ../src/textures.cpp \
 /usr/include/SDL2/SDL_sensor.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-/usr/include/c++/11/utility:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
-
-/usr/include/c++/11/ios:
 
 /usr/include/stdio.h:
 
