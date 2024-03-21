@@ -35,10 +35,28 @@ bool Interface::inter_init(){
     return true;
 };
 
-void Interface::inter_update(Game& current_game, Score score, SDL_Texture* blocktextures[], SDL_Texture* scoretextures, SDL_Rect& scoreRenderRect){
+void Interface::inter_update(Game& current_game, SDL_Texture* blocktextures[]){
     SDL_RenderClear(i_renderer);
     // Here we will had anything we have to render, the background, grid shape, score and most importantly the blocks
     render_blocks(current_game, blocktextures);
+
+    TTF_Font* Font = TTF_OpenFont("../font/Roboto-Regular.ttf", 15);
+    SDL_Color White = {255, 255, 255};
+    std::string score_text = "Score: " + std::to_string(current_game.grid.get_score());
+    SDL_Surface* surfaceMessage =
+        TTF_RenderText_Solid(Font, score_text.c_str(), White); 
+    SDL_Texture* Message = SDL_CreateTextureFromSurface(i_renderer, surfaceMessage);
+
+    SDL_Rect Message_rect; 
+    Message_rect.x = 0; 
+    Message_rect.y = 0; 
+    Message_rect.w = 200; 
+    Message_rect.h = 50;
+    SDL_RenderCopy(i_renderer, Message, NULL, &Message_rect);
+
+    SDL_FreeSurface(surfaceMessage);
+    SDL_DestroyTexture(Message);
+
     
     //SDL_RenderCopy(i_renderer, scoretextures, NULL, &scoreRenderRect);
 
@@ -117,41 +135,4 @@ void Interface::render_blocks(Game& current_game, SDL_Texture* blocktextures[]){
             SDL_RenderCopyEx(i_renderer, blocktextures[current_game.currentBlock.get_sprite_nbr(current_game.g_level)], NULL, &tile_rect, 0, NULL, SDL_FLIP_NONE);
         }
     }
-}
-
-void Interface::load_score(SDL_Texture* scoretextures, SDL_Rect& scoreRenderRect, Score score){
-
-    TTF_Font* font = TTF_OpenFont("../font/Roboto-Regular.ttf", 25);
-    TTF_CloseFont(font);
-
-    std::string scoreText = "Score: " + std::to_string(score.sc_current_score);
-
-    // Render text surface
-    SDL_Color color = {255, 255, 255};
-    SDL_Surface* textSurface = TTF_RenderText_Solid(font, scoreText.c_str(), color);
-    if (textSurface == nullptr) {
-        std::cout << "Error: Failed to create text surface! SDL_Error: " << TTF_GetError() << std::endl;
-        return;
-    }
-
-    // Create texture from surface
-    scoretextures = SDL_CreateTextureFromSurface(i_renderer, textSurface);
-
-    // Get window size
-    int width, height;
-    SDL_GetWindowSize(i_window, &width, &height);
-
-    // Get text dimensions
-    int textWidth = textSurface->w;
-    int textHeight = textSurface->h;
-
-    // Calculate position
-    int x = width - textWidth - 10;
-    int y = 10;
-
-    // Render text
-    scoreRenderRect = {x, y, textWidth, textHeight};
-
-    // Free resources
-    SDL_FreeSurface(textSurface);
 }

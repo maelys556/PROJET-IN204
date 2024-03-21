@@ -14,8 +14,7 @@ class Interface {
     public:
         Interface();
         bool inter_init();
-        void load_score(SDL_Texture* scoretextures, SDL_Rect& scoreRenderRect, Score score);
-        void inter_update(Game& current_game, Score score, SDL_Texture* blocktextures[], SDL_Texture* scoretextures, SDL_Rect& scoreRenderRect);
+        void inter_update(Game& current_game, SDL_Texture* blocktextures[]);
         void texture_load_blocks(SDL_Texture* blocktextures[]);
         void render_blocks(Game& current_game, SDL_Texture* blocktextures[]);
         ~Interface();

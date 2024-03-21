@@ -73,35 +73,38 @@ std::vector<int> Grid::completedRows() {
     return res;
 }
 
-void Grid::updateScore(std::vector<int> rows, Score score) {
+
+void Grid::updateScore(std::vector<int> rows) {
     
-    
-    int points(0);
-    std::cout<<points << "  1<---";
+    if (rows.size()==0){
+
+    } else {
     if (rows.size() == 1) {
-        points = 100;
+        g_score += 100;
     } else if (rows.size() == 2) {
-        points = 300;
+        g_score += 300;
     } else if (rows.size() == 3) {
-        points = 1200;
+        g_score += 1200;
     }
     
     int width = g_matrix.size();
     for (int k =0; k<rows.size(); ++k){
         for (int j=0; j<width; j++) {
-            points += 40 * (((g_matrix[j][rows[k]])%3) + 1);
+            g_score += 40 * (((g_matrix[j][rows[k]])%3) + 1);
         }
     }
-    std::cout<<points << "  2<---";
-    score.add_current(points);
-    
-    std::cout<<points << "  3<---";
+    }
 }
 
-
+int Grid::get_score(){
+    return g_score;
+}
 
 void Grid::deleteRow(int row) {
+    
     int width = g_matrix.size();
+    
+
     for (int i=row; i>0; i--) {
         for (int j=0; j<width; j++) {
             g_matrix[j][i] = g_matrix[j][i-1];

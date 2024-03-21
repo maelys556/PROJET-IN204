@@ -14,10 +14,9 @@ Score::Score(){
     }
     loadBestScores();
     sc_user_name = "aaa";
-    sc_current_score = 0;
 }
 
-void Score::updateLastScores() {
+/*void Score::updateLastScores() {
     sc_lasts.insert(sc_lasts.begin(), std::make_pair(sc_current_score, sc_user_name));
 
     if (sc_lasts.size() > MAX_NUMBER_SCORE) {
@@ -47,7 +46,7 @@ void Score::saveScore() {
     } else {
         std::cerr << "Unable to open file: " << filename << std::endl;
     }
-}
+}*/
 
 void Score::loadBestScores() {
     std::ifstream file(SCORE_FILE_PATH);
@@ -60,8 +59,4 @@ void Score::loadBestScores() {
         }
         file.close();
     }
-}
-
-void Score::add_current(int points){
-    sc_current_score = sc_current_score + points;
 }

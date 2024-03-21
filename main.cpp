@@ -35,11 +35,8 @@ int main(int argc, char* argv[]){
 
 // loading all textures
     SDL_Texture* blocktextures[NUM_BLOCK_SPRITES*NUM_LEVELS*NUM_POWERS + 1];
-    SDL_Texture* scoretextures;
-    SDL_Rect scoreRenderRect;
     //std::cout<< "X ";
     interface.texture_load_blocks(blocktextures);
-    //interface.load_score(scoretextures,scoreRenderRect,score);
     //std::cout<< "X ";
 
     //ici maelouille ! -------------------------------------------------------------------------------------------------
@@ -126,14 +123,11 @@ int main(int argc, char* argv[]){
 
         //std::cout<< "X ";
         std::vector<int> comp_rows = current_game.grid.completedRows();
+        
         if (comp_rows.size()!=0){
-            
-            //int offset = 0;
-            current_game.grid.updateScore(comp_rows, score);
-            //interface.load_score(scoretextures,scoreRenderRect,score);
+            current_game.grid.updateScore(comp_rows);
             for (int i=0; i<comp_rows.size(); i++){
                 current_game.grid.deleteRow(comp_rows[i]);
-                //offset+=1;
             }
         }
         //std::cout<< "X ";
@@ -144,7 +138,7 @@ int main(int argc, char* argv[]){
 
         //std::cout<< "X ";
 
-        interface.inter_update(current_game, score, blocktextures, scoretextures, scoreRenderRect);
+        interface.inter_update(current_game, blocktextures);
         //std::cout<< std::endl;
         //std::cout << "f" << std::endl;
     }
