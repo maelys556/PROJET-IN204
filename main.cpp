@@ -16,17 +16,23 @@
 int main(int argc, char* argv[]){
 
     TTF_Init();
-    TTF_Font* Font = TTF_OpenFont("../font/Roboto-Black.ttf", 25);
+    TTF_Font* Font = TTF_OpenFont("../font/Roboto-Bold.ttf", 25);
     int tick = 0;
     Interface interface;
     interface.inter_init();
 
-    Game current_game(GRID_SIZE_X, GRID_SIZE_Y);
+    int running = 0;
     
+    Score score;
+    int score_temp = 0;
+
+    while (running!=-1){
+
+
+    Game current_game(GRID_SIZE_X, GRID_SIZE_Y);
     current_game.getNewBlock();
     
     
-    Score score;
     
 
 // loading all textures
@@ -64,17 +70,18 @@ int main(int argc, char* argv[]){
     //end-------------------------------------------------------------------------------------------------------------
 
     // tests
-    bool running = true;
+    
     int move_x(0) , move_y(0) , move_rotate(0);
     
     // Game loop
-    while (running) {
+    while (running==0) {
 
         // Handle events
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type==SDL_QUIT){
-                running=0;
+                score_temp = current_game.grid.get_score();
+                running=-1;
             }
             if (event.type==SDL_KEYDOWN){
                 if (event.key.keysym.sym==SDLK_LEFT){move_x = -1;}
@@ -128,7 +135,7 @@ int main(int argc, char* argv[]){
         
         if (current_game.grid.isGameOver()){
 
-            running=false;
+            running=1;
         }
 
         
@@ -137,5 +144,22 @@ int main(int argc, char* argv[]){
         //std::cout<< std::endl;
         //std::cout << "f" << std::endl;
     }
+
     // end of game loop--------------------------------------------------------------------------
+    while (running==1){
+        interface.game_over(score_temp, Font);
+        
+
+        // Handle events
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            if (event.type==SDL_QUIT){
+                running=-1;
+            }
+            if (event.type==SDL_KEYDOWN){
+                if (event.key.keysym.sym==SDLK_SPACE){running = 0;}
+         }
+        }
+    }
+}
 };

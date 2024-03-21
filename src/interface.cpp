@@ -182,3 +182,38 @@ void Interface::render_blocks(Game& current_game, SDL_Texture* blocktextures[]){
         }
     }
 }
+
+void Interface::game_over(int score, TTF_Font* Font){
+    SDL_RenderClear(i_renderer);
+    
+    SDL_Surface* backgroundImage = IMG_Load("../images/game_over_screen.bmp");
+    if (backgroundImage == nullptr) {
+        // Handle error
+        std::cerr << "Failed to load background image: " << IMG_GetError() << std::endl;
+        return;
+    }
+
+
+
+    // Create texture from the background image
+    SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(i_renderer, backgroundImage);
+    SDL_FreeSurface(backgroundImage); // Free the surface now that we have the texture
+    
+    // Render the background texture
+    SDL_RenderCopy(i_renderer, backgroundTexture, nullptr, nullptr);    
+
+    SDL_Color White = {255, 255, 255};
+    std::string score_text = "Score: " + std::to_string(score);
+    SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Font, score_text.c_str(), White);
+    SDL_Texture* Message = SDL_CreateTextureFromSurface(i_renderer, surfaceMessage);
+    int textWidth, textHeight;
+    TTF_SizeText(Font, score_text.c_str(), &textWidth, &textHeight);
+    SDL_Rect Message_rect; 
+    int w_width, w_height;
+    SDL_GetWindowSize(i_window, &w_width, &w_height);
+    Message_rect.x = (w_width / 2)  - textWidth/2;
+    Message_rect.y =(w_height/2) - textHeight/2;
+    Message_rect.w = textWidth;
+    Message_rect.h = textHeight;
+    SDL_RenderCopy(i_renderer, Message, nullptr, &Message_rect);
+}
